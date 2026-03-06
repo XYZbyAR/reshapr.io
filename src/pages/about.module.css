@@ -1,0 +1,145 @@
+.main {
+  padding: 2.5rem 0;
+}
+
+.heroSection {
+  padding: 0.5rem 0;
+}
+
+.foundersHeader {
+  max-width: 960px;
+  margin: 0 auto 0.9rem;
+}
+
+.heroCard {
+  max-width: 960px;
+  margin: 0 auto 2rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+}
+
+.title {
+  margin-top: 0.6rem;
+  margin-bottom: 1.1rem;
+  font-size: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+  line-height: 1.08;
+}
+
+.lead {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.body {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.72;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+.foundersGrid {
+  margin: 0 auto 1.5rem;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+
+.founderCard {
+  border-radius: 0;
+  border: 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  background: transparent;
+  box-shadow: none;
+  padding: 1.2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.founderPhoto {
+  width: 116px;
+  height: 116px;
+  object-fit: cover;
+  display: block;
+  background: var(--ifm-background-surface-color);
+  border-radius: 50%;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  flex: 0 0 auto;
+}
+
+.founderBody {
+  padding: 0;
+}
+
+.founderName {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.founderRole {
+  margin: 0.5rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.5;
+}
+
+.socialRow {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.socialLink {
+  border-radius: 0;
+  border: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: var(--ifm-color-primary);
+}
+
+@media (max-width: 996px) {
+  .main {
+    padding: 1.6rem 0;
+  }
+
+  .heroCard {
+    margin-bottom: 1.8rem;
+  }
+
+  .foundersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .founderCard {
+    align-items: flex-start;
+  }
+
+  .founderPhoto {
+    width: 96px;
+    height: 96px;
+  }
+}

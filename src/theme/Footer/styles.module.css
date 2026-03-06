@@ -1,0 +1,117 @@
+.footer {
+  margin-top: 4rem;
+  background: var(--ifm-navbar-background-color, var(--ifm-background-color));
+  border-top: 1px solid
+    color-mix(in srgb, var(--ifm-color-emphasis-300) 45%, transparent);
+}
+
+.topSection {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--ifm-color-emphasis-300) 45%, transparent);
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.2rem;
+}
+
+.navLink {
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
+  font-size: var(--reshapr-nav-footer-font-size);
+  font-weight: 500;
+  line-height: var(--reshapr-nav-footer-font-size);
+}
+
+.navLink:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.socials {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.52rem;
+}
+
+.socialLink {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-700);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 88%, transparent);
+  transition: all 0.2s ease;
+}
+
+.socialLink:hover {
+  color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary-light);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  text-decoration: none;
+}
+
+.bottomSection {
+  padding: 1.2rem 0;
+}
+
+.copy {
+  margin: 0.12rem 0;
+  text-align: center;
+  color: var(--ifm-color-emphasis-700);
+  font-size: var(--reshapr-nav-footer-font-size);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@media (max-width: 996px) {
+  .topSection {
+    padding: 1.6rem 0;
+  }
+
+  .topGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem 1.2rem;
+  }
+
+  .navLink {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .socials {
+    justify-self: center;
+  }
+
+  .socialLink {
+    width: 36px;
+    height: 36px;
+  }
+
+  .copy {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}

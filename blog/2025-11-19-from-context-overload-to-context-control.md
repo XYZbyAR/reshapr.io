@@ -1,0 +1,175 @@
+---
+title: "From Context Overload to Context Control!"
+date: 2025-11-19
+authors:
+  - yacine
+  - laurent
+source_url: "https://medium.com/@reshaprio/from-context-overload-to-context-control-f867caa816e5"
+---
+
+<!-- markdownlint-disable MD001 MD026 MD030 MD045 -->
+
+* * *
+
+### From Context Overload to Context Control!
+
+![](/img/blog/context-control-hero.jpeg)
+
+### How reShapr Makes the Model Context Protocol Production-Ready?
+
+When Anthropic introduced the _Model Context Protocol (MCP)_, it provided developers with something they had been missing: a common language for connecting Large Language Model (LLM) and AI agents to existing systems and services.
+
+**But as the MCP ecosystem exploded, so did the** [**_context windows_**](https://medium.com/@pekastel/mcp-and-context-windows-lessons-learned-during-development-590e0b047916)**_!_**
+
+Anthropic’s own engineers recently wrote in “[Code execution with MCP: Building more efficient agents](https://www.anthropic.com/engineering/code-execution-with-mcp)” that agents now juggle _hundreds or thousands of tools_, and that every tool definition and intermediate result _consumes tokens,_ slowing agents, inflating costs, and sometimes even breaking workflows.
+
+At **reShapr**, we took that exact problem, token consumption and context-window explosion as the _starting point_ of our product design. Before Anthropic formalized the MCP “code-execution” pattern, we asked a more straightforward question:
+
+> _What if the protocol wasn’t the issue? What if the_ **_problem was how we expose APIs to it_**_?_
+
+<!-- truncate -->
+
+### We built reShapr on “tokens first” thinking.
+
+Anthropic’s post illustrates two pain points:
+
+1.  Loading all MCP tool definitions upfront floods the model’s context.
+2.  Intermediate results, even megabytes of JSON or text, must pass back through the model.
+
+Both are symptoms of what we call **context coupling**: treating the model’s memory as a data bus instead of an intent space. When we designed the **reShapr’s No-Code MCP Server**, we flipped that pattern. Instead of dumping every API operation and description into the model, _reShapr acts as a programmable filter between your existing API services and the MCP interface._
+
+That design allows you to:
+
+-   **Selectively translate** only the operations you need into MCP tools.
+-   **Restrict** which tools are visible to which clients, agents, or LLM personas.
+-   **Partition** your exposure by business domain, use case, or security zone.
+
+In other words, while the Anthropic team optimized the _client-side execution loop_, reShapr optimized the _server-side surface area_.
+
+> We shrink the tool universe before the model ever sees it.
+
+### One backend, many MCP faces.
+
+Here’s where reShapr becomes powerful. From a single backend API service, your CRM, payment gateway, or internal microservice, you can create _multiple MCP servers_, each with:
+
+-   Its own **name**, **tool set**, and **access policy**.
+-   Its own **domain focus** (e.g., “finance”, “support”, “analytics”).
+-   Optional **context filtering rules** for sensitive data or operations.
+
+Need to give a marketing AI access to campaign metrics but not customer PII? Spin up an **mcp-marketing** server exposing only `/metrics` and `/reports`.
+
+Need a developer agent to deploy builds? Create **mcp-devops** with `deploy`, `rollback`, and `status` tools.
+
+> Same backend, different MCP surface, but **zero code**.
+
+This _domain specialization_ not only mirrors real business boundaries; it also **keeps the model’s working set lean**. Why make Claude, ChatGPT, or any other LLM “see” thousands of endpoints if it only needs a few to do what is expected?
+
+### Filtering at both ends.
+
+Docker’s recent post, “[The Model Context Protocol: Simplifying Building AI apps with Anthropic Claude Desktop and Docker](https://www.docker.com/blog/the-model-context-protocol-simplifying-building-ai-apps-with-anthropic-claude-desktop-and-docker/)_”_, praised Anthropic’s idea of filtering tool exposure for efficiency and safety. We couldn’t agree more, and we’ve implemented that concept from day one.
+
+Where Docker focuses on **local developer control** and discovery, a marketplace or container registry of MCP servers, reShapr **operates as an AI integration layer** in all environments (_dev_, _QA_, _prod_).
+
+Our filters exist not just for discovery, but for **policy enforcement**.
+
+Think of it as _defense in depth for context_:
+
+-   reShapr filters **which APIs become MCP tools**.
+-   It also filters **which tools each client or agent may call**.
+-   It even filters **which API operations flow**, preventing oversharing.
+
+While Docker helps you _run_ MCP servers locally, **reShapr enables you to _govern_ them globally by enabling existing API services for the AI Era**. The two approaches are complementary, not competing, layers of the same emerging ecosystem.
+
+### The context window isn’t infinite, and that’s okay!
+
+Anthropic’s own metrics show that replacing direct tool calls with “code execution” reduced token usage by _98.7 %_ in their benchmark scenario. That’s impressive, but it’s also proof of the underlying issue: **agents today overconsume context** because they’re given too much surface to reason about.
+
+At reShapr, we believe, that **context discipline beats context expansion**. Instead of asking “how can the model handle more?”, we ask “how can we give it less, but more meaningful input?”
+
+Our filtering architecture, domain-specific MCP servers, and selective exposure make it possible to:
+
+-   Keep **token** budgets **predictable**.
+-   Maintain **shorter prompt-response** cycles.
+-   **Scale** agent ecosystems **horizontally** without blowing up **latency** or **cost**.
+
+> You can call it _context-aware architecture_ or, simply, good software engineering.
+
+### Bringing legacy APIs into the AI era.
+
+One of the most exciting side effects of reShapr’s design is how easily it **modernizes existing APIs**.
+
+Take [Stripe’s REST API](https://github.com/stripe/openapi) as an example. Its [OpenAPI](https://raw.githubusercontent.com/stripe/openapi/refs/heads/master/openapi/spec3.yaml) spec is comprehensive and **enormous**. Exposing it directly to an LLM would create a vast array of endpoints, parameters, and schemas, **none of which are optimized for conversational use**.
+
+With reShapr, you can wrap Stripe’s API once and expose tailored MCP views:
+
+-   **mcp-payments** exposing only `create charge`, `refund`, and `list customers`.
+-   **mcp-finops** exposing `reconcile payouts`and `generate statement`.
+-   **mcp-analytics** exposing `top-10 customers`with simplified schemas.
+
+Each of these servers can live side-by-side, derived from the same Stripe backend, yet independently optimized for distinct AI personas or business functions.
+
+> That’s what we mean when we say **“AI-native by translation, not reinvention.”**
+
+### No-Code setup, enterprise-grade results.
+
+reShapr’s configuration model is intentionally simple:
+
+1.  Connect to your existing [**Rest API**](https://swagger.io/specification/), [**GraphQL**](https://graphql.org/), or [**gRPC**](https://grpc.io/) service.
+2.  Use our interface to select the operations you want to expose.
+3.  Add optional field-level filters, renames, or descriptions.
+4.  Publish, and you instantly have a fully compliant MCP server or workflow of MCP servers.
+
+Behind the scenes, reShapr automatically:
+
+-   **Generates** the MCP schema and metadata.
+-   **Handles** auth propagation and error mapping.
+-   **Enforces** your security and throttling policies.
+-   **Provides** live observability dashboards for every tool call.
+
+What Anthropic’s engineers call “progressive disclosure”, which allows models to discover only the tools they need, occurs _naturally_ in reShapr through **configuration**, rather than **custom code**.
+
+### Scaling AI with less friction, not more code.
+
+Anthropic’s “code execution” pattern is brilliant for power users and developer-friendly agents that can write their own scripts.
+
+But in enterprise environments, most teams don’t want every agent writing arbitrary code in a sandbox.
+
+They want **predictability**, **governance**, and **measurable efficiency**.
+
+reShapr delivers that by externalizing code execution into _controlled MCP endpoints_ rather than letting each agent spin its custom code.
+
+You receive all the benefits, including reduced token usage, efficient data handling, and composable workflows, without the operational risk associated with distributed sandboxes.
+
+And when you do want to give agents controlled compute, reShapr integrates **seamlessly** with your **existing infrastructure**: Kubernetes jobs, serverless functions, or dedicated compute pools all behind the same **No-Code MCP Server** powered by reShapr.
+
+### Complementing, not competing, with the ecosystem.
+
+Let’s be clear: the work from Anthropic, Docker, and MCP / API Gateway vendors is moving the entire industry forward. Each focuses on a different layer:
+
+![](/img/blog/context-control-inline.png)
+
+> We stand on their shoulders and build the bridge between prototype and production. reShapr is what makes the MCP ecosystem _deployable at scale_.
+
+### Toward a governed, efficient AI integration fabric.
+
+As MCP adoption accelerates, organizations face the same maturity curve APIs did a decade ago:
+
+1.  **Experimentation** — local prototypes and SDKs.
+2.  **Expansion** — hundreds of endpoints and tools.
+3.  **Governance** — access control, observability, cost management.
+4.  **Optimization** — token efficiency, domain specialization, and security.
+
+reShapr sits squarely at stages _2_, _3_ and _4_. We help teams operationalize MCP servers safely, efficiently, and at scale, **without requiring them to rewrite their systems or manually code integrations**.
+
+### In summary: Control the context, don’t expand it.
+
+Anthropic’s _Code Execution with MCP_ article is an important milestone. It demonstrates how agents can be more intelligent about tool usage by converting direct calls into code. reShapr builds on that same insight, but applies it to the _entire lifecycle_ of MCP deployment.
+
+-   We **anticipated** the token and context explosion problem.
+-   We **engineered** a system that filters, segments, and secures MCP exposure.
+-   We **deliver** remote-first, production-ready servers, not non-realistic experiments.
+-   We **complement** Anthropic and others, including Docker, API, and MCP Gateway vendors, by bringing enterprise rigor to the protocol.
+
+In AI integrations, as in good software design, **less context is often more powerful**.
+
+> Ultimately, the goal isn’t to make **LLMs** see more; it’s to **make them see _better_**.
