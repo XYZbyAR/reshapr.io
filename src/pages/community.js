@@ -1,6 +1,7 @@
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
+import {SiBluesky, SiDiscord} from 'react-icons/si';
 import styles from './community.module.css';
 
 const channels = [
@@ -46,6 +47,24 @@ const contributionWays = [
 ];
 
 export default function CommunityPage() {
+  const renderChannelIcon = (icon) => {
+    if (icon === 'bluesky') {
+      return <SiBluesky className={styles.channelIconSvg} aria-hidden="true" />;
+    }
+
+    if (icon === 'discord') {
+      return <SiDiscord className={styles.channelIconSvg} aria-hidden="true" />;
+    }
+
+    return (
+      <span
+        className={styles.channelIcon}
+        data-icon={icon}
+        aria-hidden="true"
+      />
+    );
+  };
+
   return (
     <Layout
       title="Community"
@@ -79,11 +98,7 @@ export default function CommunityPage() {
                 {channels.map((channel) => (
                   <article key={channel.title} className={styles.channelCard}>
                     <div className={styles.channelHeader}>
-                      <span
-                        className={styles.channelIcon}
-                        data-icon={channel.icon}
-                        aria-hidden="true"
-                      />
+                      {renderChannelIcon(channel.icon)}
                       <Heading as="h3" className={styles.channelTitle}>
                         {channel.title}
                       </Heading>

@@ -21,6 +21,10 @@
 
   --reshapr-font-stack: 'Figtree', 'Figtree Fallback';
   --reshapr-nav-footer-font-size: 14.5px;
+  --reshapr-sidebar-link-py: 0.34rem;
+  --reshapr-sidebar-link-px: 0.64rem;
+  --reshapr-sidebar-item-gap: 0.12rem;
+  --reshapr-sidebar-group-gap: 0.32rem;
   --ifm-font-family-base: var(--reshapr-font-stack);
   --ifm-heading-font-family: var(--reshapr-font-stack);
   --ifm-font-size-base: 16px;
@@ -485,6 +489,22 @@ img.navbar__logo {
   font-weight: 700;
 }
 
+/* Compact + uniform docs sidebar spacing on all breakpoints */
+.theme-doc-sidebar-container .menu__link {
+  padding: var(--reshapr-sidebar-link-py) var(--reshapr-sidebar-link-px);
+  line-height: 1.35;
+}
+
+.theme-doc-sidebar-container .menu__list-item + .menu__list-item {
+  margin-top: var(--reshapr-sidebar-item-gap);
+}
+
+.theme-doc-sidebar-container .theme-doc-sidebar-item-category-level-1 + .theme-doc-sidebar-item-category-level-1,
+.theme-doc-sidebar-container .theme-doc-sidebar-item-category-level-1 + .theme-doc-sidebar-item-link-level-1,
+.theme-doc-sidebar-container .theme-doc-sidebar-item-link-level-1 + .theme-doc-sidebar-item-category-level-1 {
+  margin-top: var(--reshapr-sidebar-group-gap);
+}
+
 /* Unified left sidebar style for Docs + Blog */
 @media (min-width: 997px) {
   .theme-doc-sidebar-container .thin-scrollbar,
@@ -511,8 +531,7 @@ img.navbar__logo {
   .theme-blog-list-page aside.col.col--3 nav.thin-scrollbar a,
   .theme-blog-post-page aside.col.col--3 nav.thin-scrollbar a {
     display: block;
-    padding: var(--ifm-menu-link-padding-vertical)
-      var(--ifm-menu-link-padding-horizontal);
+    padding: var(--reshapr-sidebar-link-py) var(--reshapr-sidebar-link-px);
     border-radius: var(--ifm-global-radius);
     font-family: var(--reshapr-font-stack);
     font-size: var(--reshapr-nav-footer-font-size);
@@ -538,7 +557,7 @@ img.navbar__logo {
   .theme-doc-sidebar-container .menu__list-item,
   .theme-blog-list-page aside.col.col--3 nav.thin-scrollbar li,
   .theme-blog-post-page aside.col.col--3 nav.thin-scrollbar li {
-    margin-top: 0.45rem;
+    margin-top: var(--reshapr-sidebar-item-gap);
   }
 
   .theme-doc-sidebar-container .menu__link--active,
