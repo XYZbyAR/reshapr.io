@@ -12,7 +12,16 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'reShapr',
   tagline: 'The No-Code MCP Server for AI-Native API Access',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'alternate icon',
+        href: '/img/favicon.ico',
+      },
+    },
+  ],
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -77,7 +86,8 @@ const config = {
       navbar: {
         logo: {
           alt: 'reShapr Logo',
-          src: 'img/reSharp-logo-transparent.png',
+          src: 'img/reShapr-logo-light.png',
+          srcDark: 'img/reShapr-logo-dark.png',
         },
         items: [
           {to: '/', label: 'Home', position: 'left', className: 'navbar-home-link'},
@@ -115,7 +125,8 @@ const config = {
         style: 'dark',
         logo: {
           alt: 'reShapr Logo',
-          src: 'img/reSharp-logo-transparent.png',
+          src: 'img/reShapr-logo-light@2x.png',
+          srcDark: 'img/reShapr-logo-light@2x.png',
           href: 'https://reshapr.io',
         },
         links: [

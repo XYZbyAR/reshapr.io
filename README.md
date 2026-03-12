@@ -14,6 +14,14 @@ git clone https://github.com/reshaprio/reshapr.io.git
 npm run start
 ```
 
+Install dependencies before running local commands:
+
+```bash
+npm install
+```
+
+Note: this project uses `patch-package` (via `postinstall`) to apply a small compatibility patch for `react-loadable-ssr-addon-v5-slorber` and avoid Node.js `DEP0169` deprecation warnings during build.
+
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 You build... as usual using npm.

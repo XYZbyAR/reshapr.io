@@ -1,6 +1,0 @@
-<svg width="240" height="64" viewBox="0 0 240 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="240" height="64" rx="12" fill="#121826"/>
-  <rect x="10" y="10" width="44" height="44" rx="10" fill="#F97316"/>
-  <path d="M22 41V23h4.6l5.4 7.1 5.4-7.1H42v18h-4.4V29.5l-5.4 6.9-5.4-6.9V41H22z" fill="white"/>
-  <text x="66" y="40" fill="white" font-size="24" font-family="Inter, Arial, sans-serif" font-weight="700">reShapr</text>
-</svg>

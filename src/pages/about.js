@@ -78,7 +78,7 @@ export default function AboutPage() {
                     alt=""
                     loading="lazy"
                     onError={(event) => {
-                      event.currentTarget.src = '/img/reSharp-logo-transparent.png';
+                      event.currentTarget.src = '/img/reShapr-logo-dark@2x.png';
                     }}
                   />
                   <div className={styles.founderBody}>
