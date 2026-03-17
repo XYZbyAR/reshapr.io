@@ -5,25 +5,31 @@
 This is the user documentation for the beta launch of [reShapr](https://reshapr.io).
 Follow updates on [X](https://x.com/reshaprio), [Bluesky](https://bsky.app/profile/reshapr.io), and [LinkedIn](https://www.linkedin.com/company/reshapr).
 
-## Understand It
+## Tutorials
 
-- [Why reShapr?](./reshapr/why-reshapr.md)
-- [reShapr Features](./reshapr/reshapr-features.md)
-- [Services and Artifacts](./reshapr/services-and-artifacts.md)
-- [Configuration Plan and Exposition](./reshapr/configuration-plan-and-exposition.md)
-- [Gateway Group and Gateway](./reshapr/gateway-group-and-gateway.md)
-- [Security Options and Secrets](./reshapr/security-options-and-secrets.md)
-- [Prompts](./reshapr/prompts.md)
-- [Custom Tools](./reshapr/custom-tools.md)
-- [Resources](./reshapr/resources.md)
+- [Getting Started with CLI](./tutorials/getting-started.md)
 
-## Use It
+## How-to Guides
 
-- [Getting Started with CLI](./reshapr/getting-started-with-cli.md)
-- [reShapr CLI Advanced](./reshapr/reshapr-cli-advanced.md)
-- [Cloud Options and Plans](./reshapr/cloud-options-and-plans.md)
-- [Hybrid Deployment](./reshapr/hybrid-deployment.md)
-- [On-Premises Deployment](./reshapr/on-premises-deployment.md)
+- [Deploy a Hybrid Gateway](./how-to-guides/deploy-hybrid-gateway.md)
+
+## Reference
+
+- [Features Overview](./reference/features.md)
+- [CLI Commands](./reference/cli-commands.md)
+- [Prompts Specification](./reference/prompts-specification.md)
+- [Custom Tools Specification](./reference/custom-tools-specification.md)
+- [Resources Specification](./reference/resources-specification.md)
+- [Cloud Options and Plans](./reference/cloud-plans.md)
+
+## Explanation
+
+- [Why reShapr?](./explanation/why-reshapr.md)
+- [How It Works](./explanation/architecture.md)
+- [Services and Artifacts](./explanation/services-and-artifacts.md)
+- [Configuration and Exposition](./explanation/configuration-and-exposition.md)
+- [Gateway Groups and Gateways](./explanation/gateway-groups-and-gateways.md)
+- [Security Model](./explanation/security-model.md)
 
 ## Explore It
 

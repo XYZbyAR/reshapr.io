@@ -18,97 +18,138 @@ const sidebars = {
   tutorialSidebar: [
     {
       type: 'category',
-      label: 'Understand It',
+      label: 'Overview',
+      className: 'sidebar-icon-overview',
       collapsed: false,
       items: [
         {
           type: 'doc',
-          id: 'reshapr/why-reshapr',
+          id: 'explanation/why-reshapr',
           label: 'Why reShapr?',
         },
         {
           type: 'doc',
-          id: 'reshapr/how-it-works',
+          id: 'explanation/architecture',
           label: 'How It Works',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/reshapr-features',
-          label: 'reShapr Features',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/services-and-artifacts',
-          label: 'Services and Artifacts',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/configuration-plan-and-exposition',
-          label: 'Configuration Plan and Exposition',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/gateway-group-and-gateway',
-          label: 'Gateway Group and Gateway',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/security-options-and-secrets',
-          label: 'Security Options and Secrets',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/prompts',
-          label: 'Prompts',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/custom-tools',
-          label: 'Custom Tools',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/resources',
-          label: 'Resources',
         },
       ],
     },
     {
       type: 'category',
-      label: 'Use It',
+      label: 'Tutorials',
+      className: 'sidebar-icon-tutorials',
+      description: 'Learning-oriented guides to get you started',
       collapsed: false,
       items: [
         {
           type: 'doc',
-          id: 'reshapr/getting-started-with-cli',
+          id: 'tutorials/try-reshapr-online',
+          label: 'Try reShapr online',
+        },
+        {
+          type: 'doc',
+          id: 'tutorials/getting-started',
           label: 'Getting Started with CLI',
         },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'How-to Guides',
+      className: 'sidebar-icon-howto',
+      description: 'Task-oriented guides for specific goals',
+      collapsed: false,
+      items: [
         {
           type: 'doc',
-          id: 'reshapr/reshapr-cli-advanced',
-          label: 'reShapr CLI Advanced',
+          id: 'tutorials/docker-compose',
+          label: 'Docker Compose',
         },
         {
           type: 'doc',
-          id: 'reshapr/cloud-options-and-plans',
+          id: 'tutorials/helm-charts',
+          label: 'Helm Charts',
+        },
+        {
+          type: 'doc',
+          id: 'how-to-guides/deploy-hybrid-gateway',
+          label: 'Deploy a Hybrid Gateway',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Explanation',
+      className: 'sidebar-icon-explanation',
+      description: 'Concepts and background understanding',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'explanation/services-and-artifacts',
+          label: 'Services and Artifacts',
+        },
+        {
+          type: 'doc',
+          id: 'explanation/configuration-and-exposition',
+          label: 'Configuration and Exposition',
+        },
+        {
+          type: 'doc',
+          id: 'explanation/gateway-groups-and-gateways',
+          label: 'Gateway Groups and Gateways',
+        },
+        {
+          type: 'doc',
+          id: 'explanation/security-model',
+          label: 'Security Model',
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      className: 'sidebar-icon-reference',
+      description: 'Technical descriptions and specifications',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'reference/features',
+          label: 'Features Overview',
+        },
+        {
+          type: 'doc',
+          id: 'reference/cli-commands',
+          label: 'CLI Commands',
+        },
+        {
+          type: 'doc',
+          id: 'reference/prompts-specification',
+          label: 'Prompts Specification',
+        },
+        {
+          type: 'doc',
+          id: 'reference/custom-tools-specification',
+          label: 'Custom Tools Specification',
+        },
+        {
+          type: 'doc',
+          id: 'reference/resources-specification',
+          label: 'Resources Specification',
+        },
+        {
+          type: 'doc',
+          id: 'reference/cloud-plans',
           label: 'Cloud Options and Plans',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/hybrid-deployment',
-          label: 'Hybrid Deployment',
-        },
-        {
-          type: 'doc',
-          id: 'reshapr/on-premises-deployment',
-          label: 'On-Premises Deployment',
         },
       ],
     },
     {
       type: 'doc',
       label: 'Demos',
-      id: 'reshapr/demos',
+      className: 'sidebar-icon-demos',
+      id: 'demos',
     },
   ],
 };
