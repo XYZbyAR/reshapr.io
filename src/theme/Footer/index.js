@@ -82,10 +82,7 @@ export default function Footer() {
 
       <div className={styles.bottomSection}>
         <div className="container">
-          <p className={styles.copy}>Copyright © 2026 reShapr.</p>
-          <p className={styles.copy}>
-            Making enterprise APIs AI-ready safely, scalably, and instantly.
-          </p>
+          <p className={styles.copy}>Turn your APIs AI-native - Copyright © 2026 reShapr.</p>
         </div>
       </div>
       <img

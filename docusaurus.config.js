@@ -12,13 +12,39 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'reShapr',
   tagline: 'The No-Code MCP Server for AI-Native API Access',
-  favicon: 'img/favicon.svg',
+  favicon: 'favicon.ico',
   headTags: [
     {
       tagName: 'link',
       attributes: {
-        rel: 'alternate icon',
-        href: '/img/favicon.ico',
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'manifest',
+        href: '/site.webmanifest',
       },
     },
   ],
