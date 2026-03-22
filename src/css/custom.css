@@ -24,7 +24,8 @@
   --reshapr-sidebar-link-py: 0.34rem;
   --reshapr-sidebar-link-px: 0.64rem;
   --reshapr-sidebar-item-gap: 0.12rem;
-  --reshapr-sidebar-group-gap: 0.12rem;
+  --reshapr-sidebar-group-gap: 0.38rem;
+  --doc-sidebar-width: 260px;
   --ifm-font-family-base: var(--reshapr-font-stack);
   --ifm-heading-font-family: var(--reshapr-font-stack);
   --ifm-font-size-base: 16px;
@@ -611,6 +612,15 @@ img.navbar__logo {
     border-right: 0 !important;
     border-inline-end: 0 !important;
     padding-left: 0.9rem;
+  }
+
+  /* Widen the doc content column and equalize spacing */
+  [class*='docItemCol'] {
+    max-width: 100% !important;
+  }
+
+  [class*='docMainContainer'] {
+    padding-left: 1.9rem;
   }
 
   .theme-doc-sidebar-container .menu__link,
