@@ -449,6 +449,43 @@ body,
   }
 }
 
+/* Gram-like top nav: 300ms ease-out hover pill behind label */
+.navbar__items--left .navbar__link,
+.navbar__items--reshapr-nav .navbar__link,
+.navbar__items--right .navbar__link {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+
+.navbar__items--left .navbar__link::after,
+.navbar__items--reshapr-nav .navbar__link::after,
+.navbar__items--right .navbar__link::after {
+  content: '';
+  position: absolute;
+  inset: 1px 0;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--palette-ink) 9%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .navbar__items--left .navbar__link::after,
+[data-theme='dark'] .navbar__items--reshapr-nav .navbar__link::after,
+[data-theme='dark'] .navbar__items--right .navbar__link::after {
+  background: color-mix(in srgb, var(--palette-bg) 14%, transparent);
+}
+
+.navbar__items--left .navbar__link:hover::after,
+.navbar__items--reshapr-nav .navbar__link:hover::after,
+.navbar__items--right .navbar__link:hover::after {
+  opacity: 1;
+}
+
 .navbar-try-button {
   display: inline-flex;
   align-items: center;
