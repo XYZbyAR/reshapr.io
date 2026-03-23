@@ -10,6 +10,7 @@ import Heading from '@theme/Heading';
 import {ICON_SIZE_INLINE_PX, ICON_SIZE_LP_FEATURE_PX} from '@site/src/constants/iconSizes';
 import VideoWithPlaceholder from '@site/src/components/VideoWithPlaceholder';
 import PageMotionRoot, {scrollEase, usePageRevealMotion} from '@site/src/components/PageMotion';
+import landingShell from '@site/src/components/LandingShell/styles.module.css';
 import styles from './index.module.css';
 
 const CLI_INSTALL_CMD = 'npm install -g reshapr-cli';
@@ -298,7 +299,7 @@ export default function Home() {
       title={siteConfig.title}
       description="reShapr documentation and guides for building secure MCP endpoints from existing APIs.">
       <PageMotionRoot>
-        <div className={styles.landingFrame}>
+        <div className={landingShell.landingFrame}>
           <HomepageHeader />
           <HomepageMain />
         </div>

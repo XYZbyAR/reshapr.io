@@ -144,7 +144,7 @@ const config = {
             type: 'html',
             position: 'right',
             value:
-              '<a class="navbar-github-link" href="https://github.com/reshaprio/reshapr" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository reshaprio/reshapr"></a>',
+              '<a class="navbar-github-link" href="https://github.com/reshaprio/reshapr.io" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository reshaprio/reshapr.io"></a>',
           },
         ],
       },

@@ -1,7 +1,9 @@
+import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import {m} from 'motion/react';
 import PageMotionRoot, {usePageRevealMotion} from '@site/src/components/PageMotion';
+import landingShell from '@site/src/components/LandingShell/styles.module.css';
 import styles from './about.module.css';
 
 const founders = [
@@ -35,7 +37,7 @@ export default function AboutPage() {
       title="About"
       description="About reShapr and the mission behind our open source MCP platform.">
       <PageMotionRoot>
-        <main className={styles.main}>
+        <main className={clsx(landingShell.landingFrame, styles.main)}>
           <section className={styles.heroSection}>
             <div className="container">
               <m.div
