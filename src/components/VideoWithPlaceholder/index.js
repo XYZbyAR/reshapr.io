@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useColorMode} from '@docusaurus/theme-common';
@@ -43,6 +43,12 @@ export default function VideoWithPlaceholder({
 
   const resolvedSrc = useBaseUrl(themedSrc);
 
+  // Reset ready state when the source changes so the placeholder
+  // shows again while the new video loads.
+  useEffect(() => {
+    setVideoReady(false);
+  }, [resolvedSrc]);
+
   const meta = placeholders[themedSrc] ?? FALLBACK;
   const {placeholder, aspectRatio} = meta;
 
@@ -79,6 +85,7 @@ export default function VideoWithPlaceholder({
         />
       ) : null}
       <video
+        key={resolvedSrc}
         className={clsx(styles.video, videoClassName)}
         onLoadedData={onLoadedData}
         {...videoProps}>
