@@ -162,7 +162,8 @@ function HomepageHeader() {
               ease: [0.25, 0.1, 0.25, 1],
             }}>
             <VideoWithPlaceholder
-              src="/img/banner-hero-video.mp4"
+              srcLight="/img/banner-hero-video-light.mp4"
+              srcDark="/img/banner-hero-video-dark.mp4"
               className={styles.heroVideoRoot}
               videoClassName={styles.heroImage}
               reduceMotion={reduceMotion}
