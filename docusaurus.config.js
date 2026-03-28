@@ -85,6 +85,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarCount: 0,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -139,6 +140,12 @@ const config = {
             to: '/community',
             label: 'Community',
             position: 'left',
+          },
+          {
+            type: 'html',
+            position: 'right',
+            value:
+              '<a class="button button--secondary button--lg navbar-try-button" href="https://try.reshapr.io/" target="_blank" rel="noopener noreferrer">Login</a>',
           },
           {
             type: 'html',

@@ -7,8 +7,8 @@
 }
 
 .heroCard {
-  max-width: var(--ifm-container-width);
-  margin: 0 auto 5rem;
+  max-width: 780px;
+  margin: 0 0 5rem;
   padding: 0;
   background: transparent;
   border: 0;
@@ -28,21 +28,26 @@
   margin-top: 0.6rem;
   margin-bottom: 1.1rem;
   font-size: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+  font-weight: 700;
   line-height: 1.08;
 }
 
 .lead {
-  margin: 0 0 1rem;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
   color: var(--ifm-font-color-base);
 }
 
 .body {
   margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.72;
-  color: var(--ifm-font-color-base);
+  font-size: 0.9875rem;
+  line-height: 1.75;
+  color: var(--ifm-color-emphasis-800);
+}
+
+[data-theme='dark'] .body {
+  color: var(--ifm-color-emphasis-700);
 }
 
 .sectionBlock {
@@ -73,12 +78,16 @@
   background: transparent;
   box-shadow: none;
   padding: clamp(1.25rem, 3vw, 1.75rem);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  /* anchor reset — card is the link */
+  color: inherit;
+  text-decoration: none;
 }
 
 .channelCard:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--ifm-link-color);
   box-shadow: none;
+  text-decoration: none;
 }
 
 .channelHeader {
@@ -93,12 +102,20 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  padding: 0.35rem;
+  border-radius: 6px;
   color: var(--palette-ink);
   transform: translateY(-1px);
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 [data-theme='dark'] .channelIconWrap {
   color: var(--palette-white);
+}
+
+.channelCard:hover .channelIconWrap {
+  color: var(--ifm-font-color-base);
+  background: color-mix(in srgb, var(--ifm-font-color-base) 6%, transparent);
 }
 
 .channelTitle {
@@ -110,6 +127,15 @@
   color: var(--ifm-heading-color);
 }
 
+.channelCta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ifm-link-color);
+  letter-spacing: 0.01em;
+}
+
 .channelText {
   flex: 1 1 auto;
   margin: 0.65rem 0 1rem;
@@ -118,31 +144,8 @@
   color: var(--ifm-font-color-secondary);
 }
 
-.channelLink {
-  display: inline-flex;
-  align-self: flex-start;
-  margin-top: auto;
-  text-decoration: none;
-  border: 0;
-  padding: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  transition: color 0.2s ease;
-}
-
-.channelLink:hover {
-  color: var(--ifm-color-primary-dark);
-}
-
 [data-theme='dark'] .channelCard {
   border-color: var(--ifm-color-emphasis-300);
-  background: transparent;
-}
-
-[data-theme='dark'] .channelCard:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: none;
 }
 
 .panel {
@@ -172,17 +175,21 @@
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--ifm-font-color-base);
+  color: var(--ifm-color-primary);
   font-weight: 700;
+}
+
+.checkList li:not(:last-child) {
+  padding-bottom: 1.5rem;
 }
 
 .checkList li + li {
   border-top: 1px solid var(--ifm-color-emphasis-200);
-  padding-top: 2rem; /* 32px */
+  padding-top: 1.5rem;
 }
 
 .checkList li + li::before {
-  top: 2rem;
+  top: 1.5rem;
 }
 
 [data-theme='dark'] .checkList li + li {
@@ -190,7 +197,7 @@
 }
 
 .actions {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;

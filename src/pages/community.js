@@ -98,14 +98,14 @@ export default function CommunityPage() {
                 whileInView={motion.inViewBase}
                 viewport={{once: true, margin: '-64px 0px', amount: 0.2}}
                 transition={motion.headerTransition}>
-                <Heading as="h2" className={styles.sectionTitle}>
-                  Connect With The Community
-                </Heading>
                 <div className={styles.channelGrid}>
                   {channels.map((channel, index) => (
-                    <m.article
+                    <m.a
                       key={channel.title}
                       className={styles.channelCard}
+                      href={channel.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       initial={motion.inViewHidden}
                       whileInView={motion.inViewBase}
                       viewport={{once: true, margin: '0px 0px -10% 0px', amount: 0.15}}
@@ -117,14 +117,8 @@ export default function CommunityPage() {
                         </Heading>
                       </div>
                       <p className={styles.channelText}>{channel.description}</p>
-                      <a
-                        className={styles.channelLink}
-                        href={channel.href}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        {channel.cta}
-                      </a>
-                    </m.article>
+                      <span className={styles.channelCta}>{channel.cta} →</span>
+                    </m.a>
                   ))}
                 </div>
               </m.div>
@@ -151,7 +145,6 @@ export default function CommunityPage() {
                       </m.li>
                     ))}
                   </ul>
-                  <br />
                   <m.div
                     className={styles.actions}
                     initial={motion.inViewHidden}
@@ -163,7 +156,7 @@ export default function CommunityPage() {
                       href="https://discord.gg/KyDUdam34h"
                       target="_blank"
                       rel="noopener noreferrer">
-                      Join us on Discord
+                      Join Community
                     </Link>
                     <Link
                       className="button button--secondary button--lg"

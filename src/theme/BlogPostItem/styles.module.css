@@ -1,0 +1,29 @@
+/* ─── Back navigation ────────────────────────────────────────────────────── */
+.breadcrumb {
+  margin-bottom: 1.75rem;
+}
+
+.breadcrumbBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.breadcrumbBack:hover {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.breadcrumbArrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.breadcrumbBack:hover .breadcrumbArrow {
+  transform: translateX(-4px);
+}

@@ -363,7 +363,7 @@
 }
 
 .cliCopyBtn:hover {
-  color: var(--ifm-color-primary);
+  color: var(--ifm-link-color);
   background: color-mix(in srgb, var(--ifm-font-color-base) 6%, transparent);
 }
 
@@ -589,18 +589,22 @@
   font-weight: 700;
 }
 
-/* Panel checklist: 32px rhythm + hairline dividers (see --reshapr-lp-check-gap) */
+/* Panel checklist: symmetric spacing above and below each divider */
 .panelCheckList li {
   margin-bottom: 0;
 }
 
+.panelCheckList li:not(:last-child) {
+  padding-bottom: 1.5rem;
+}
+
 .panelCheckList li + li {
   border-top: 1px solid var(--ifm-color-emphasis-200);
-  padding-top: var(--reshapr-lp-check-gap);
+  padding-top: 1.5rem;
 }
 
 .panelCheckList li + li::before {
-  top: var(--reshapr-lp-check-gap);
+  top: 1.5rem;
 }
 
 [data-theme='dark'] .panelCheckList li + li {

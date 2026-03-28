@@ -23,4 +23,3 @@ Rather than building an MCP server from scratch, you can use reShapr to **insta
 - **No** custom Agents
 - **No** vendor lock-in
 
-[Back to Home](../index.mdx)

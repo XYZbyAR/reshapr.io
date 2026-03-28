@@ -1,0 +1,40 @@
+.byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.avatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+
+.authorName:hover {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.separator {
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-400);
+}

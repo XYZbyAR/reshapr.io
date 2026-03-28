@@ -296,7 +296,7 @@ export default function Home() {
   return (
     <Layout
       title={siteConfig.title}
-      description="reShapr documentation and guides for building secure MCP endpoints from existing APIs.">
+      description="reShapr instantly turns your existing REST, gRPC, and GraphQL APIs into production-grade MCP servers — no code, no lock-in, no compromises.">
       <PageMotionRoot>
         <div className={landingShell.landingFrame}>
           <HomepageHeader />

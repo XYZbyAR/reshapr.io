@@ -25,4 +25,3 @@ A Gateway is not necessarily attached to a single Gateway Group ; it can be atta
 
 </aside>
 
-[Back to Home](../index.mdx)

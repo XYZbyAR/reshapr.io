@@ -46,9 +46,9 @@
 }
 
 .tab:hover {
-  border-color: color-mix(in srgb, var(--ifm-color-primary) 28%, var(--reshapr-doc-divider));
+  border-color: color-mix(in srgb, var(--ifm-link-color) 28%, var(--reshapr-doc-divider));
   background: color-mix(in srgb, var(--palette-ink) 3%, transparent);
-  color: var(--ifm-color-primary);
+  color: var(--ifm-link-color);
 }
 
 .tabActive {
@@ -63,8 +63,8 @@
 }
 
 [data-theme='dark'] .tab:hover {
-  border-color: var(--ifm-color-primary-light);
-  background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+  border-color: var(--ifm-link-color);
+  background: color-mix(in srgb, var(--ifm-link-color) 6%, transparent);
 }
 
 [data-theme='dark'] .tabActive {

@@ -4,12 +4,13 @@ date: 2025-07-24
 authors:
   - yacine
   - laurent
+description: "Why enterprises shouldn't build MCP servers from scratch — and what a no-code MCP server changes about AI-native API access."
+image: /img/blog/why-reshapr-hero.png
+tags: [MCP, Architecture, Enterprise]
 source_url: "https://reshaprio.medium.com/why-reshapr-db9788cd9062"
 ---
 
 <!-- markdownlint-disable MD001 MD026 MD030 MD045 -->
-
-* * *
 
 ![Why reShapr?](/img/blog/why-reshapr-hero.png)
 
