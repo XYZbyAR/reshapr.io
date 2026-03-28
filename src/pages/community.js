@@ -13,7 +13,7 @@ const channels = [
     title: 'GitHub',
     description:
       'Track releases, discuss implementation details, open issues, and submit pull requests to improve reShapr.',
-    href: 'https://github.com/reshaprio/reshapr.io',
+    href: 'https://github.com/reshaprio/reshapr',
     cta: 'Join on GitHub',
     icon: 'github',
   },
@@ -28,7 +28,7 @@ const channels = [
   {
     title: 'Bluesky',
     description:
-      'Stay tuned to technical updates, releases, and open-source milestones with short-form community news.',
+      'Stay tuned to technical updates, releases, and open source milestones with short-form community news.',
     href: 'https://bsky.app/profile/reshapr.io',
     cta: 'Follow on Bluesky',
     icon: 'bluesky',
@@ -64,7 +64,7 @@ export default function CommunityPage() {
   return (
     <Layout
       title="Community"
-      description="Community space for reShapr users, contributors, and open-source collaborators.">
+      description="Community space for reShapr users, contributors, and open source collaborators.">
       <PageMotionRoot>
         <main className={clsx(landingShell.landingFrame, styles.main)}>
           <section className={styles.heroSection}>
@@ -162,7 +162,7 @@ export default function CommunityPage() {
                     </Link>
                     <Link
                       className="button button--secondary button--lg"
-                      href="https://github.com/reshaprio/reshapr.io/issues"
+                      href="https://github.com/reshaprio/reshapr/issues"
                       target="_blank"
                       rel="noopener noreferrer">
                       Open Issues

@@ -20,7 +20,7 @@ const columns = [
       {label: 'Docs',         to:   '/docs/overview/why-reshapr'},
       {label: 'Demos',        to:   '/docs/demos'},
       {label: 'CLI',          to:   '/docs/reference/cli-commands'},
-      {label: 'GitHub',       href: 'https://github.com/reshaprio'},
+      {label: 'GitHub',       href: 'https://github.com/reshaprio/reshapr/'},
       {label: 'Community',    to:   '/community'},
     ],
   },
