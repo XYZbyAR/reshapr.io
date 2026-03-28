@@ -573,6 +573,11 @@ body,
   display: none !important;
 }
 
+[data-theme='dark'] .navbar-try-button:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 68%, var(--ifm-color-primary-light));
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 68%, var(--ifm-color-primary-light));
+}
+
 .navbar button.clean-btn {
   display: inline-flex;
   align-items: center;
