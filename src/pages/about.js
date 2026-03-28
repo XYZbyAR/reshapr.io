@@ -39,7 +39,18 @@ const SOCIAL_ICONS = {
 const founders = [
   {
     name: 'Laurent Broudoux',
-    role: 'Co-founder of Microcks & reShapr',
+    role: (
+      <>
+        Co-founder of{' '}
+        <a href="https://www.linkedin.com/company/microcks/" target="_blank" rel="noopener noreferrer">
+          Microcks
+        </a>{' '}
+        &{' '}
+        <a href="https://www.linkedin.com/company/reshapr/" target="_blank" rel="noopener noreferrer">
+          reShapr
+        </a>
+      </>
+    ),
     affiliation: 'Postman team member',
     image: '/img/founders/laurent-broudoux.png',
     socials: [
@@ -50,12 +61,23 @@ const founders = [
   },
   {
     name: 'Yacine Kheddache',
-    role: 'Co-founder of Microcks & reShapr',
+    role: (
+      <>
+        Co-founder of{' '}
+        <a href="https://www.linkedin.com/company/microcks/" target="_blank" rel="noopener noreferrer">
+          Microcks
+        </a>{' '}
+        &{' '}
+        <a href="https://www.linkedin.com/company/reshapr/" target="_blank" rel="noopener noreferrer">
+          reShapr
+        </a>
+      </>
+    ),
     affiliation: 'Postman team member',
     image: '/img/founders/yacine-kheddache.png',
     socials: [
       {name: 'LinkedIn', link: 'https://www.linkedin.com/in/yacinekheddache/'},
-      {name: 'Bluesky', link: 'https://bsky.app/profile/yadayac.bsky.social'},
+      {name: 'Bluesky', link: 'https://bsky.app/profile/kheddache.me'},
       {name: 'GitHub', link: 'https://github.com/yada'},
     ],
   },
@@ -92,8 +114,8 @@ export default function AboutPage() {
                   engineering time while introducing <strong>security risks</strong> and technical debt.
                 </m.p>
                 <m.p variants={motion.itemVariants} className={styles.leadAccent}>
-                  We built reShapr to change that — with one objective:
-                  <strong> make enterprise API-to-MCP adoption fast, reliable, and secure</strong>.
+                  We built reShapr to change that, with one objective:
+                  <strong> make enterprise API-to-MCP a doption fast, reliable, and secure</strong>.
                 </m.p>
                 <m.p variants={motion.itemVariants} className={styles.body}>
                   Our platform instantly transforms your existing APIs (REST,
