@@ -13,7 +13,7 @@ import PageMotionRoot, {scrollEase, usePageRevealMotion} from '@site/src/compone
 import landingShell from '@site/src/components/LandingShell/styles.module.css';
 import styles from './index.module.css';
 
-const CLI_INSTALL_CMD = 'npm install -g reshapr-cli';
+const CLI_INSTALL_CMD = 'npm install -g @reshapr/reshapr-cli';
 
 function CliInstallSnippet() {
   const [copied, setCopied] = useState(false);
@@ -96,7 +96,6 @@ const highlights = [
   'OpenAPI, GraphQL, gRPC to MCP conversion',
   'Security and policy controls before exposure',
   'Cloud native and flexible deployment patterns',
-  'Fast setup with docs-first onboarding',
 ];
 
 function HomepageHeader() {
@@ -134,7 +133,7 @@ function HomepageHeader() {
               whileHover={reduceMotion ? undefined : {y: -0.5}}
               whileTap={reduceMotion ? undefined : {scale: 0.997}}>
               <Link className="button button--primary button--lg" to="https://try.reshapr.io/">
-                Start Building
+                Try Online
               </Link>
             </m.div>
             <m.div
@@ -239,7 +238,7 @@ function HomepageMain() {
             <div className={styles.panelCopy}>
               <Heading as="h2">Built for secure AI-native operations</Heading>
               <p>
-                Keep control of how APIs are exposed to AI clients—credentials,
+                Keep control of how APIs are exposed to AI clients: credentials,
                 policies, and runtime behavior stay in your trust domain, not
                 bolted on after the fact.
               </p>
