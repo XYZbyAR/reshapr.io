@@ -2,7 +2,7 @@
  * Navbar logo:
  * - **Desktop (`windowSize === 'desktop'`):** PNG wordmarks from `navbar.logo` only.
  * - **Mobile (`windowSize === 'mobile'`):** only `static/img/reShapr-mark.png` (icon-only mark) — no wordmark PNGs in the DOM.
- * - **SSR / first paint (`ssr`):** both nodes mounted; `custom.css` media queries pick wordmark vs mark until hydration.
+ * - **SSR / first paint (`ssr`):** renders wordmark only; hydration swaps to compact mark on small screens.
  * - **Small-screen bar layout** (≤1024px): hamburger left, mark right — `custom.css` (`space-between` on the left `.navbar__items`).
  */
 import React from 'react';
@@ -47,12 +47,7 @@ function NavbarLogoThemedImage({logo, alt, imageClassName}) {
   );
 
   if (windowSize === 'ssr') {
-    return (
-      <>
-        {fullBlock}
-        {compactBlock}
-      </>
-    );
+    return fullBlock;
   }
   if (windowSize === 'mobile') {
     return compactBlock;
