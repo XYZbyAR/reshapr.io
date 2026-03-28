@@ -8,8 +8,7 @@
 
 /* ─── Mission copy block ─────────────────────────────────────────────────── */
 .heroCard {
-  max-width: 780px;
-  margin: 0 auto 6rem;
+  margin: 0 0 6rem;
   padding: 0;
   background: transparent;
   border: 0;

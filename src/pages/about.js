@@ -103,7 +103,7 @@ export default function AboutPage() {
                 animate="visible">
                 <m.div variants={motion.itemVariants}>
                   <Heading as="h1" className={styles.title}>
-                    Making Enterprise APIs AI-Ready
+                    Turn your APIs <span style={{color: '#16BA96'}}>AI-native</span>
                   </Heading>
                 </m.div>
                 <m.p variants={motion.itemVariants} className={styles.lead}>
