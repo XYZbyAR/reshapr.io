@@ -251,4 +251,3 @@ $ reshapr service get 0N0802V07SZEH -o json | jq .name
 "Open-Meteo APIs"
 ```
 
-[Back to Home](../index.mdx)

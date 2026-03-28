@@ -14,6 +14,8 @@ const OUT = path.join(ROOT, 'src/data/video-placeholders.json');
 
 const VIDEOS = [
   {publicPath: '/img/banner-hero-video.mp4', file: 'static/img/banner-hero-video.mp4'},
+  {publicPath: '/img/banner-hero-video-light.mp4', file: 'static/img/banner-hero-video-light.mp4'},
+  {publicPath: '/img/banner-hero-video-dark.mp4', file: 'static/img/banner-hero-video-dark.mp4'},
 ];
 
 function defaultPlaceholderSvg() {
