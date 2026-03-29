@@ -1318,10 +1318,8 @@ img.navbar__logo.navbar__logo-compact {
     background-size: 0.65rem 0.65rem !important;
   }
 
-  /* Widen the doc content column on mid-range desktop (hides right TOC intentionally) */
-  [class*='docItemCol'] {
-    max-width: 100% !important;
-  }
+  /* Doc content column width is controlled by DocItem/Layout/styles.module.css
+     (75 % at 997 px+) so the right TOC stays visible. */
 
   [class*='docMainContainer'] {
     padding-left: 1.9rem;
@@ -1394,12 +1392,7 @@ img.navbar__logo.navbar__logo-compact {
   }
 }
 
-/* Wide screen: restore natural column widths so the right TOC re-appears */
-@media (min-width: 1280px) {
-  [class*='docItemCol'] {
-    max-width: unset !important;
-  }
-}
+/* (1280 px rule removed — TOC column is now always visible at 997 px+) */
 
 /* Demos row: stroke icon comes from .sidebar-icon-demos ::before (Lucide circle-play) */
 
