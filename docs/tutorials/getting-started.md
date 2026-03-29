@@ -4,7 +4,7 @@ This page details the installation and the basic usages of the reShapr Command L
 
 ## Installation
 
-The `reshapr` CLI is an NPM package available at [https://www.npmjs.com/package/@reshapr/reshapr-cli](https://www.npmjs.com/package/@reshapr/reshapr-cli). You can install it globally in your Linux or MacOS system.
+The `reshapr` CLI is an NPM package available at **[https://www.npmjs.com/package/@reshapr/reshapr-cli](https://www.npmjs.com/package/@reshapr/reshapr-cli)**. You can install it globally in your Linux or MacOS system.
 
 In a terminal window, just issue the following command:
 
@@ -66,7 +66,7 @@ Commands:
 
 ## Login to reShapr beta
 
-While we use the [reShapr Online Try](/docs/tutorials/try-reshapr-online) in this tutorial, you should point the server URL to your own environment if you have one set up. Common URLs include `http://localhost:5555` for Docker Compose or your cluster’s ingress URL for Kubernetes.
+While we use the **[reShapr Online Try](/docs/tutorials/try-reshapr-online)** in this tutorial, you should point the server URL to your own environment if you have one set up. Common URLs include `http://localhost:5555` for Docker Compose or your cluster’s ingress URL for Kubernetes.
 
 Use the following `login` command with the `-s` option (or `--server`) to specify you’re joining the beta platform:
 
@@ -111,11 +111,11 @@ With this output:
   Internal IDP: undefined
 ```
 
-🤔 **From this step, you have two choices**: exploring the detailed concepts step-by-step and executing detailed commands **OR** going directly to the [All-in-one magic command 🪄](#all-in-one-magic-command-)
+🤔 **From this step, you have two choices**: exploring the detailed concepts step-by-step and executing detailed commands **OR** going directly to the **[All-in-one magic command 🪄](#all-in-one-magic-command-)**
 
 ## Import Artifact & Service
 
-Importing an artifact is the first step to expose MCP endpoints for your API. Artifacts enable the discovery of Services as explained in [Services & Artifacts](../explanation/services-and-artifacts.md). Let’s do that using the public [Open-Meteo OpenAPI specification](https://github.com/open-meteo/open-meteo/blob/main/openapi.yml). For that we’ll need the [Raw URL of this document](https://raw.githubusercontent.com/open-meteo/open-meteo/refs/heads/main/openapi.yml) and we’ll use the `import` command: 
+Importing an artifact is the first step to expose MCP endpoints for your API. Artifacts enable the discovery of Services as explained in **[Services & Artifacts](../explanation/services-and-artifacts.md)**. Let’s do that using the public **[Open-Meteo OpenAPI specification](https://github.com/open-meteo/open-meteo/blob/main/openapi.yml)**. For that we’ll need the **[Raw URL of this document](https://raw.githubusercontent.com/open-meteo/open-meteo/refs/heads/main/openapi.yml)** and we’ll use the `import` command: 
 
 ```bash
 reshapr import -u https://raw.githubusercontent.com/open-meteo/open-meteo/refs/heads/main/openapi.yml
@@ -153,7 +153,7 @@ Operations :
 
 ## Configuring consumption
 
-[Configuration Plan](../explanation/configuration-and-exposition.md) will allow you to define how your Service will be consumed by MCP Clients. You’ll define the **backend endpoint** the MCP Gateway will target as well as the **security options** for future expositions. Let’s create a simple configuration plan for the  [Open-Meteo Service](https://github.com/open-meteo/open-meteo/blob/main/openapi.yml) we just imported.
+**[Configuration Plan](../explanation/configuration-and-exposition.md)** will allow you to define how your Service will be consumed by MCP Clients. You’ll define the **backend endpoint** the MCP Gateway will target as well as the **security options** for future expositions. Let’s create a simple configuration plan for the  **[Open-Meteo Service](https://github.com/open-meteo/open-meteo/blob/main/openapi.yml)** we just imported.
 
 For that, we need the Service identifier we got just before (`0PXEW1ZDWFCZS`) and we need to know the public endpoint of this API (`https://api.open-meteo.com`). We’ll use the `config create` command and provide a basic name and description:
 

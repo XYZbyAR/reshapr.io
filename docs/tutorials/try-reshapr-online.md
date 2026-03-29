@@ -2,7 +2,7 @@
 
 The fastest way to experience reShapr is through our hosted online environment — no installation required.
 
-Head over to [try.reshapr.io](https://try.reshapr.io/) to get started instantly.
+Head over to **[try.reshapr.io](https://try.reshapr.io/)** to get started instantly.
 
 ## Login workflow
 
@@ -52,7 +52,7 @@ Press `Ctrl+C` in the browser and log in using the reShapr CLI. When the browser
 
 ### Step 6 — You're all set!
 
-Login is successful. You can now use the CLI to import APIs, create expositions, and manage MCP servers. Follow the instructions in the [Getting Started](/docs/tutorials/getting-started) tutorial to continue.
+Login is successful. You can now use the CLI to import APIs, create expositions, and manage MCP servers. Follow the instructions in the **[Getting Started](/docs/tutorials/getting-started)** tutorial to continue.
 
 ![Step 6 — CLI login successful, ready to use reShapr](/img/docs/try-reshapr-online-6.png)
 

@@ -2,13 +2,13 @@ import ThemedImage from '@theme/ThemedImage';
 
 # Hybrid deployment
 
-As introduced in [Why reShapr?](../overview/why-reshapr.md), the reShapr architecture allows deployment on several types and locations of Gateways, depending on your subscription plan. Thanks to this flexible architecture, the reShapr solution can be used in a **hybrid deployment** mode where you, as the *Acme Company*, can choose to host some reShapr Gateways within your own trust domain, close to your AI workloads and API backend endpoints. This gives you **full control over the data plane,** ensuring that your data never leaves your trusted environment!
+As introduced in **[Why reShapr?](../overview/why-reshapr.md)**, the reShapr architecture allows deployment on several types and locations of Gateways, depending on your subscription plan. Thanks to this flexible architecture, the reShapr solution can be used in a **hybrid deployment** mode where you, as the *Acme Company*, can choose to host some reShapr Gateways within your own trust domain, close to your AI workloads and API backend endpoints. This gives you **full control over the data plane,** ensuring that your data never leaves your trusted environment!
 
 This page explains how a reShapr hybrid deployment is working and how to implement it.
 
 ## Overview
 
-The [Gateway Group & Gateway](../explanation/gateway-groups-and-gateways.md) page introduces the core concepts of this deployment architecture:
+The **[Gateway Group & Gateway](../explanation/gateway-groups-and-gateways.md)** page introduces the core concepts of this deployment architecture:
 
 - The *Gateway Groups* represent the abstract target of your MCP Server exposition - it is owned by an organization and defines labels for matching *Gateways*,
 - The *Gateways* are the concrete elements that expose your MCP Servers - they receive deployment directives and configuration plans from the reShapr control plane. **
@@ -21,7 +21,7 @@ The [Gateway Group & Gateway](../explanation/gateway-groups-and-gateways.md) pag
   }}
 />
 
-When it’s running, a reShapr Gateway discovers the MCP Servers it has to expose from the control plane. This discovery is made according to the [Exposition](../explanation/configuration-and-exposition.md) you previously created and the Gateway Groups you chose. To do so, the Gateway presents **a set of label selectors** that will be used during the discovery and throughout its lifetime to synchronize its [Service](../explanation/services-and-artifacts.md) definitions and [Configuration Plans](../explanation/configuration-and-exposition.md). While it is alive, an ephemeral Gateway representation is tied to the Gateway Group in the control plane.
+When it’s running, a reShapr Gateway discovers the MCP Servers it has to expose from the control plane. This discovery is made according to the **[Exposition](../explanation/configuration-and-exposition.md)** you previously created and the Gateway Groups you chose. To do so, the Gateway presents **a set of label selectors** that will be used during the discovery and throughout its lifetime to synchronize its **[Service](../explanation/services-and-artifacts.md)** definitions and **[Configuration Plans](../explanation/configuration-and-exposition.md)**. While it is alive, an ephemeral Gateway representation is tied to the Gateway Group in the control plane.
 
 A Gateway is not necessarily attached to a single Gateway Group; it can be attached to many groups as long as its selectors match the group's labels! You could have a set of Gateways with a unique selector `org=acme` matching all the Acme’s Gateway Groups.
 
@@ -30,18 +30,18 @@ A Gateway is not necessarily attached to a single Gateway Group; it can be attac
 A *Gateway* starts, lives, and terminates according to a certain lifecycle. Below are the different elements covering this lifecycle:
 
 1. The first stage of a Gateway life is the **Registration phase**. A Gateway is configured to be connected to a control plane instance (a hostname and a port). During startup, the Gateway advertises itself to the control plane, providing an API Token for authentication, its unique identifier, its label selectors, and the information of the URLs which can be used for reaching this Gateway.
-    1. If authentication is successful, then the Gateway is registered into the control plane, and it fetches its [Service](../explanation/services-and-artifacts.md) definitions and [Configuration Plans](../explanation/configuration-and-exposition.md) for exposing the MCP Servers,
+    1. If authentication is successful, then the Gateway is registered into the control plane, and it fetches its **[Service](../explanation/services-and-artifacts.md)** definitions and **[Configuration Plans](../explanation/configuration-and-exposition.md)** for exposing the MCP Servers,
     2. If authentication failed, then the Gateway stops with an error message.
-2. After successful registration, the Gateway starts a **Health check** process. This health check will be done every 2 minutes and is acknowledged by the control plane. 
+2. After successful registration, the Gateway starts a **Health check** process. This health check will be done every 2 minutes and is acknowledged by the control plane.
     1. If a health check cannot happen because of the control plane being unavailable, the Gateway is considered as *unsynchronized* - a **Registration** phase will be done upon reconnection,
     2. If the control plane doesn’t receive a health check from the Gateway in a 5-minute period, it removes this Gateway from its internal list and marks it as *unsynchronized*. It will force a new **Registration**.
-    3. MCP Servers execution is not interrupted during health check issues. 
-3. After successful registration, the Gateway also starts a **Changes Streaming** process: the control plane is able to push it the relevant notification changes based on its label selectors. 
+    3. MCP Servers execution is not interrupted during health check issues.
+3. After successful registration, the Gateway also starts a **Changes Streaming** process: the control plane is able to push it the relevant notification changes based on its label selectors.
     1. Upon changes reception, the MCP Servers are immediately updated or removed without interruption.
     2. If a new **Registration** happen (due to a connectivity issue), this streaming process is updated accordingly.
-4. On process shutdown, the Gateway starts the **Termination** phase: 
+4. On process shutdown, the Gateway starts the **Termination** phase:
     1. Health checks are stopped, and a termination notification is sent to the control plane for the removal of its internal Gateway representation.
-    2. The changes streaming process is stopped, and communication is cleaned. 
+    2. The changes streaming process is stopped, and communication is cleaned.
     3. MCP Servers stop handling incoming requests.
 
 ### Security
@@ -49,17 +49,11 @@ A *Gateway* starts, lives, and terminates according to a certain lifecycle. Belo
 It’s worth noting the following security characteristics of this architecture:
 
 - Communication between the control plane and Gateways is always at the initiative of the gateways through an upstream network channel. The Gateway must be able to reach out to the control plane, and then bi-directional streaming is set up on the same communication channel. Network admin doesn’t have to set up any ingress access for the control plane to reach out to the Gateway - only the egress route to the control plane is necessary.
-- Communication is done over [gRPC](https://en.wikipedia.org/wiki/GRPC) protocol, that used [HTTP/2](https://en.wikipedia.org/wiki/HTTP/2) with [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security). On top of that, reShapr implements token-based authorization with an API Token that is generated, renewed, and revoked by the control plane. You can decide to share the API Token among different gateways or have an API Token per-gateway,
-- When running in this hybrid mode, the control plane only holds the configuration of your MCP Servers: the [Services & Artifacts](../explanation/services-and-artifacts.md) definition as well as the [Configuration Plan & Exposition](../explanation/configuration-and-exposition.md). All the application data : the exchanges between your Agents, LLM, MCP Clients, and your backend API (included the reShapr MCP Servers) stay in your datacenter!
-- Because the Gateway runs in the location of your choice, they can now access any private Authorization Server or IDP you may want to use via the [Security options & Secrets](../explanation/security-model.md)!
+- Communication is done over **[gRPC](https://en.wikipedia.org/wiki/GRPC)** protocol, that used **[HTTP/2](https://en.wikipedia.org/wiki/HTTP/2)** with **[TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security)**. On top of that, reShapr implements token-based authorization with an API Token that is generated, renewed, and revoked by the control plane. You can decide to share the API Token among different gateways or have an API Token per-gateway,
+- When running in this hybrid mode, the control plane only holds the configuration of your MCP Servers: the **[Services & Artifacts](../explanation/services-and-artifacts.md)** definition as well as the **[Configuration Plan & Exposition](../explanation/configuration-and-exposition.md)**. All the application data : the exchanges between your Agents, LLM, MCP Clients, and your backend API (included the reShapr MCP Servers) stay in your datacenter!
+- Because the Gateway runs in the location of your choice, they can now access any private Authorization Server or IDP you may want to use via the **[Security options & Secrets](../explanation/security-model.md)**!
 
 ## Installation
-
-### Prerequisites: Get the reShapr Gateway container image
-
-First thing you'll need is access to the Gateway container image. As of now, you need to pull it from a temporary location with an ephemeral and dedicated URL. The container image is hosted on [ttl.sh](https://ttl.sh/), and you have to get your own unique URL from the reShapr team.
-
-For example, a typical URL for the reShapr Gateway container image looks like this: `ttl.sh/reshapr-gateway-276ee61b-1378-470c-9651-72cdb094c6e4:12h`
 
 ### Retrieve an API Token for your Gateway(s)
 

@@ -23,7 +23,7 @@ Three different options are available to secure the MCP Server or Endpoint expos
 
 - **None** - which is the *default* and probably not a good idea! This means that the gateway endpoint is unsecured. In this situation, all headers are propagated to the backend API. So this is a scenario that you would use just for a quick test OR if you decide - with great generosity - to provide a free MCP Server to the world!
 - **API Key** - means that the gateway will validate the value of the specific `x-reshapr-key` header in the incoming MCP requests. The API Key is generated  and transmitted just once at configuration time. It represents a token that you must store securely and must only share with trusted users. reShapr allows renewing an API Key and propagates the change to the gateways exposing the corresponding service.
-- **OAuth2 Bearer** - means that the gateway will validate the OAuth2 token provided as a `Bearer` in the `Authorization` header in the incoming requests. During the configuration time, you choose your OAuth2 Authorization Servers and the list of required scopes to access the MCP Server. This information is propagated to the gateways that will be in charge of trusting the incoming tokens. reShapr gateways implements the different specifications mentioned in the [Model Context Protocol Version 2025-06-18 Authorization](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization) recommendations such as:
+- **OAuth2 Bearer** - means that the gateway will validate the OAuth2 token provided as a `Bearer` in the `Authorization` header in the incoming requests. During the configuration time, you choose your OAuth2 Authorization Servers and the list of required scopes to access the MCP Server. This information is propagated to the gateways that will be in charge of trusting the incoming tokens. reShapr gateways implements the different specifications mentioned in the **[Model Context Protocol Version 2025-06-18 Authorization](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)** recommendations such as:
   - OAuth 2.0 Protected Resource Metadata ([**RFC9728**](https://datatracker.ietf.org/doc/html/rfc9728))
   - OAuth 2.0 Authorization Server Metadata ([**RFC8414**](https://datatracker.ietf.org/doc/html/rfc8414))
   - OAuth 2.0 Resource Indicators ([**RFC 8707**](https://www.rfc-editor.org/rfc/rfc8707.html))
@@ -32,7 +32,7 @@ Three different options are available to secure the MCP Server or Endpoint expos
 
 ## Backend Secrets
 
-In addition to protecting the MCP Endpoint or Server, access to the backend API must also be protected. This backend must have a means to validate authentication and authorization proofs coming from the reShapr gateway. 
+In addition to protecting the MCP Endpoint or Server, access to the backend API must also be protected. This backend must have a means to validate authentication and authorization proofs coming from the reShapr gateway.
 
 For this purpose, reShapr supports the concept of `Secret`, which enables the secure storage of information on how to authenticate the backend API call. In reShapr, a Secret can contain different information:
 
@@ -40,11 +40,11 @@ For this purpose, reShapr supports the concept of `Secret`, which enables the se
 - **A token (with an optional associated header)** -  in case the backend support API Key or token-based authentication mechanisms. If no token header is provided then the default `Authorization: Bearer <token>`  is assumed and transmitted to the backend API but token header can hold any value.
 - **A X509 certificate** - that will be used to secure the transport, in case the backend API is enforcing TLS communication with client-side certificate.
 
-reShapr also supports **Elicitation-based backend secret**. [Elicitations](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) are a recent addition to the MCP Protocol, coming in version `2025-11-25` of the protocol. Unlike a standard backend Secret, an Elicitation-based one does not require proactive provisioning: when needed, the reShapr MCP Server will return to the user to request backend credentials or initiate an OAuth authorization flow. Two different flows are supported:
+reShapr also supports **Elicitation-based backend secret**. **[Elicitations](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation)** are a recent addition to the MCP Protocol, coming in version `2025-11-25` of the protocol. Unlike a standard backend Secret, an Elicitation-based one does not require proactive provisioning: when needed, the reShapr MCP Server will return to the user to request backend credentials or initiate an OAuth authorization flow. Two different flows are supported:
 
 - The [**URL Mode Elicitation for Sensitive Data**](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#url-mode-elicitation-for-sensitive-data) - in case your User has its own token/API key/authorization code to access the backend API.
 - The [**URL Mode Elicitation for OAuth Flows**](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation#url-mode-elicitation-for-oauth-flows) - in case your User has to complete an OAuth / OIDC authorization flow to enable the MCP Server to get an authorization code to access the backend API.
 
 ## All together!
 
-MCP Endpoint security options and backend secret are not exclusive, and they’d rather be combined to secure the transmission chain from end to end. To achieve fully secure and authorized usage of your MCP Endpoint provided by reShapr, we recommend considering OAuth2 + Elicitation-based backend Secret when you configure your [S](services-and-artifacts.md)ervice for exposure on a reShapr gateway.
+MCP Endpoint security options and backend secret are not exclusive, and they’d rather be combined to secure the transmission chain from end to end. To achieve fully secure and authorized usage of your MCP Endpoint provided by reShapr, we recommend considering OAuth2 + Elicitation-based backend Secret when you configure your **[Service](services-and-artifacts.md)** for exposure on a reShapr gateway.
