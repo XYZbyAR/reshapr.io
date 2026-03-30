@@ -75,7 +75,7 @@ const featureCards = [
   {
     title: 'No-code API translation',
     description:
-      'Turn existing REST, GraphQL, and gRPC services into MCP endpoints without rewriting your backend.',
+      'Turn existing REST, GraphQL, and gRPC services into MCP endpoints without writing code.',
     icon: <Code {...featureIconProps} />,
   },
   {
@@ -87,7 +87,7 @@ const featureCards = [
   {
     title: 'Deploy Anywhere',
     description:
-      'Expose endpoints on managed gateways or run gateways in your own trust domain for stricter data boundaries.',
+      'Expose endpoints and run reShapr in your own trust domain for stricter data boundaries.',
     icon: <Globe {...featureIconProps} />,
   },
 ];
