@@ -10,7 +10,7 @@ Learn how to deploy reShapr on Kubernetes using Helm charts for production-grade
 
 ## Overview
 
-reShapr provides two Helm charts, distributed as OCI artifacts on **[Quay.io](https://quay.io)**:
+reShapr provides two Helm charts, distributed as OCI artifacts on our **registry**:
 
 | Chart | Purpose | Registry |
 |-------|---------|----------|

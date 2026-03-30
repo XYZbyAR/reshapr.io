@@ -57,8 +57,8 @@ With this output:
 ```bash
 ℹ️  Reshapr containers (release: 0.0.5, started at: 2026-04-01T10:30:00.000Z)
 NAME                           IMAGE                                        ...   STATUS
-reshapr-ctrl-1                 quay.io/reshapr/reshapr-ctrl:0.0.5           ...   Up 2 minutes
-reshapr-proxy-1                quay.io/reshapr/reshapr-proxy:0.0.5          ...   Up 2 minutes
+reshapr-ctrl-1                 registry.reshapr.io/reshapr/reshapr-ctrl:0.0.5           ...   Up 2 minutes
+reshapr-proxy-1                registry.reshapr.io/reshapr/reshapr-proxy:0.0.5          ...   Up 2 minutes
 reshapr-db-1                   postgres:17                                  ...   Up 2 minutes
 ```
 
@@ -184,7 +184,7 @@ Then the gateway proxy in a separate terminal:
 docker run -it --rm -p 7777:7777 \
   -e RESHAPR_CTRL_HOST=host.docker.internal \
   --add-host=host.docker.internal:host-gateway \
-  quay.io/reshapr/reshapr-proxy:nightly
+  registry.reshapr.io/reshapr/reshapr-proxy:nightly
 ```
 
 The `install/` folder also includes helper scripts:
