@@ -1,4 +1,4 @@
-# reShapr — Explanation
+# reShapr — Explanations
 
 https://reshapr.io/docs/explanations/services-and-artifacts
 

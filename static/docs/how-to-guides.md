@@ -1,6 +1,6 @@
 # reShapr — How-to Guides
 
-https://reshapr.io/docs/tutorials/docker-compose
+https://reshapr.io/docs/how-to-guides/deploy-hybrid-gateway
 
 ---
 
@@ -65,57 +65,14 @@ Helper scripts included: `create-admin.sh`, `create-user+org.sh`.
 
 https://reshapr.io/docs/tutorials/kubernetes
 
-Deploy reShapr on Kubernetes using Helm charts. Two OCI-based charts are available on Quay.io (latest version: 0.0.2):
+Deploy reShapr on Kubernetes using Helm charts for production-grade environments.
 
-- `reshapr-control-plane` — Control plane API server + database
-- `reshapr-proxy` — MCP gateway (data plane)
+reShapr provides two Helm charts, distributed as OCI artifacts on the reShapr registry:
 
-### Install the control plane (development)
+- `reshapr-control-plane` — Control plane API server + database (`registry.reshapr.io/reshapr/reshapr-ctrl`)
+- `reshapr-proxy` — MCP gateway (data plane) (`registry.reshapr.io/reshapr/reshapr-proxy`)
 
-```bash
-helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update
-
-helm install reshapr-control-plane \
-  oci://quay.io/reshapr/reshapr-helm-charts/reshapr-control-plane --version 0.0.2 \
-  --create-namespace --namespace reshapr-system \
-  --set postgresql.enabled=true \
-  --set postgresql.auth.password=admin \
-  --set apiKey.value=dev-api-key-change-me-in-production \
-  --set encryptionKey.value=dev-encryption-key-change-me-in-production \
-  --set admin.nameValue=admin \
-  --set admin.passwordValue=password \
-  --set admin.emailValue=reshapr@example.com \
-  --set admin.defaultGatewayTokensValue=my-super-secret-token-xyz
-```
-
-### Install the proxy (development)
-
-```bash
-helm install reshapr-proxy \
-  oci://quay.io/reshapr/reshapr-helm-charts/reshapr-proxy --version 0.0.2 \
-  --create-namespace --namespace reshapr-proxies \
-  --set gateway.idPrefix=acme \
-  --set gateway.labels='env=dev;team=reshapr' \
-  --set gateway.fqdns=mcp.acme.loc \
-  --set gateway.controlPlane.host=reshapr-control-plane-ctrl.reshapr-system \
-  --set gateway.controlPlane.port=5555 \
-  --set gateway.controlPlane.token=my-super-secret-token-xyz
-```
-
-### Key parameters
-
-Control plane: `ctrl.replicaCount`, `postgresql.enabled`, `externalDatabase.host`, `admin.*`, `apiKey.value`, `ingress.enabled`.
-
-Proxy: `replicaCount`, `gateway.idPrefix`, `gateway.fqdns`, `gateway.labels`, `gateway.controlPlane.*`, `autoscaling.enabled`, `ingress.enabled`.
-
-### Production notes
-
-- Use external PostgreSQL with `postgresql.enabled=false` and `externalDatabase.*`
-- Store tokens in Kubernetes secrets (`gateway.controlPlane.existingSecret`, `apiKey.existingSecret`)
-- Enable ingress with TLS for both charts
-- Enable HPA for the proxy with `autoscaling.enabled=true`
-
-Full parameter reference: https://github.com/reshaprio/reshapr-helm-charts
+Full installation instructions: https://github.com/reshaprio/reshapr-helm-charts
 
 ---
 

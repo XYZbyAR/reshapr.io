@@ -1,4 +1,4 @@
-# reShapr — Reference
+# reShapr — References
 
 https://reshapr.io/docs/references/features
 
