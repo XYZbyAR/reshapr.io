@@ -6,7 +6,7 @@ Learn how to run reShapr locally using Docker Compose for development and testin
 
 Before you begin, make sure you have the following installed on your machine:
 
-- **[Docker](https://docs.docker.com/get-docker/)** (with Docker Compose v2) or **[Podman](https://podman.io/docs/installation)**
+- **[Docker](https://docs.docker.com/get-docker/)** (with Docker Compose v2)
 - **[Node.js](https://nodejs.org/)** (v18 or later) needed for the reShapr CLI
 - The **reShapr CLI** installed globally:
 
