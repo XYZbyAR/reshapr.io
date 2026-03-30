@@ -213,4 +213,13 @@ const config = {
     }),
 };
 
+// Plausible analytics integration
+// See https://docusaurus.io/docs/api/docusaurus-config#scripts
+config.scripts = [
+  {
+    src: 'https://plausible.io/js/pa-TOyYchE3DUzm-4XTvkMo-.js',
+    async: true,
+  },
+];
+
 export default config;
