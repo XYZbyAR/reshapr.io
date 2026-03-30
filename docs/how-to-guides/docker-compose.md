@@ -136,7 +136,7 @@ You'll be prompted for your username and password. Once authenticated:
 ✅ Configuration saved to /Users/you/.reshapr/config
 ```
 
-> From here, you can follow the **[Getting Started tutorial](./getting-started.md)** to import services, create configuration plans, and expose MCP endpoints just point everything at your local instance.
+> From here, you can follow the **[Getting Started tutorial](../tutorials/getting-started.md)** to import services, create configuration plans, and expose MCP endpoints just point everything at your local instance.
 
 ## Stop the containers
 
@@ -205,7 +205,7 @@ The `install/` folder also includes helper scripts for user and organization set
 
 ## Next steps
 
-- **[Getting Started with CLI](./getting-started.md)** — import services and expose MCP endpoints
+- **[Getting Started with CLI](../tutorials/getting-started.md)** — import services and expose MCP endpoints
 - **[Install on Kubernetes](./kubernetes.md)** — deploy reShapr using Helm charts
 - **[How it works](../overview/how-it-works.md)** — understand the reShapr architecture
 

@@ -41,11 +41,11 @@
   },
   "sidebar.tutorialSidebar.doc.Run using Docker Compose": {
     "message": "Run using Docker Compose",
-    "description": "The label for the doc item 'Run using Docker Compose' in sidebar 'tutorialSidebar', linking to the doc tutorials/docker-compose"
+    "description": "The label for the doc item 'Run using Docker Compose' in sidebar 'tutorialSidebar', linking to the doc how-to-guides/docker-compose"
   },
   "sidebar.tutorialSidebar.doc.Install on Kubernetes": {
     "message": "Install on Kubernetes",
-    "description": "The label for the doc item 'Install on Kubernetes' in sidebar 'tutorialSidebar', linking to the doc tutorials/kubernetes"
+    "description": "The label for the doc item 'Install on Kubernetes' in sidebar 'tutorialSidebar', linking to the doc how-to-guides/kubernetes"
   },
   "sidebar.tutorialSidebar.doc.Deploy a Hybrid Gateway": {
     "message": "Deploy a Hybrid Gateway",

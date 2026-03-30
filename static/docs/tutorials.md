@@ -79,7 +79,7 @@ reshapr import -u https://raw.githubusercontent.com/open-meteo/open-meteo/refs/h
 
 ## Docker Compose
 
-https://reshapr.io/docs/tutorials/docker-compose
+https://reshapr.io/docs/how-to-guides/docker-compose
 
 Run reShapr locally using Docker Compose for development and testing.
 
@@ -152,7 +152,7 @@ Helper scripts included: `create-admin.sh`, `create-user+org.sh`.
 
 ## Helm Charts
 
-https://reshapr.io/docs/tutorials/kubernetes
+https://reshapr.io/docs/how-to-guides/kubernetes
 
 Deploy reShapr on Kubernetes using Helm charts for production-grade environments.
 

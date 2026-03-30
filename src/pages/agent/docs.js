@@ -8,9 +8,9 @@ import styles from './styles.module.css';
 const HUMAN_HREFS = {
   overview:        '/docs/overview/why-reshapr',
   tutorials:       '/docs/tutorials/getting-started',
-  'how-to-guides': '/docs/tutorials/docker-compose',
-  explanation:     '/docs/explanations/services-and-artifacts',
-  reference:       '/docs/references/features',
+  'how-to-guides': '/docs/how-to-guides/docker-compose',
+  explanations:     '/docs/explanations/services-and-artifacts',
+  references:       '/docs/references/features',
   demos:           '/docs/demos',
 };
 
@@ -18,8 +18,8 @@ const SECTIONS = {
   overview:      {label: 'Overview',      file: '/docs/overview.md'},
   tutorials:     {label: 'Tutorials',     file: '/docs/tutorials.md'},
   'how-to-guides': {label: 'How-to Guides', file: '/docs/how-to-guides.md'},
-  explanation:   {label: 'Explanations',  file: '/docs/explanations.md'},
-  reference:     {label: 'References',    file: '/docs/references.md'},
+  explanations:   {label: 'Explanations',  file: '/docs/explanations.md'},
+  references:     {label: 'References',    file: '/docs/references.md'},
   demos:         {label: 'Demos',         file: '/docs/demos.md'},
 };
 

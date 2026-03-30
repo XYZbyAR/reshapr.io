@@ -25,7 +25,7 @@ Please read 👉 [https://github.com/reshaprio/reshapr-helm-charts](https://gith
 
 ## Next steps
 
-- **[Getting Started with CLI](./getting-started.md)** — import services and expose MCP endpoints
+- **[Getting Started with CLI](../tutorials/getting-started.md)** — import services and expose MCP endpoints
 - **[Run using Docker Compose](./docker-compose.md)** — run reShapr locally for development
 - **[How it works](../overview/how-it-works.md)** — understand the reShapr architecture
 - **[Security Model](../explanations/security-model.md)** — learn about reShapr security

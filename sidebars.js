@@ -67,12 +67,12 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'tutorials/docker-compose',
+          id: 'how-to-guides/docker-compose',
           label: 'Run using Docker Compose',
         },
         {
           type: 'doc',
-          id: 'tutorials/kubernetes',
+          id: 'how-to-guides/kubernetes',
           label: 'Install on Kubernetes',
         },
         {

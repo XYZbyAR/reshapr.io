@@ -6,7 +6,7 @@ https://reshapr.io/docs/how-to-guides/deploy-hybrid-gateway
 
 ## Run using Docker Compose
 
-https://reshapr.io/docs/tutorials/docker-compose
+https://reshapr.io/docs/how-to-guides/docker-compose
 
 Run reShapr locally using Docker Compose for development and testing.
 
@@ -63,7 +63,7 @@ Helper scripts included: `create-admin.sh`, `create-user+org.sh`.
 
 ## Install on Kubernetes
 
-https://reshapr.io/docs/tutorials/kubernetes
+https://reshapr.io/docs/how-to-guides/kubernetes
 
 Deploy reShapr on Kubernetes using Helm charts for production-grade environments.
 
