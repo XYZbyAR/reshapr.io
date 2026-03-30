@@ -9,27 +9,25 @@ const columns = [
     items: [
       {label: 'Why reShapr',     to:   '/docs/overview/why-reshapr'},
       {label: 'How It Works',    to:   '/docs/overview/how-it-works'},
-      {label: 'Getting Started', to:   '/docs/tutorials/getting-started'},
-      {label: 'Try Online',      href: 'https://try.reshapr.io/'},
+      {label: 'Try Online',      href: '/docs/tutorials/try-reshapr-online'},
       {label: 'Blog',            to:   '/blog'},
     ],
   },
   {
     title: 'Resources',
     items: [
-      {label: 'Docs',         to:   '/docs/overview/why-reshapr'},
-      {label: 'Demos',        to:   '/docs/demos'},
-      {label: 'CLI',          to:   '/docs/references/cli-commands'},
-      {label: 'GitHub',       href: 'https://github.com/reshaprio/reshapr/'},
       {label: 'Community',    to:   '/community'},
+      {label: 'Demos',        to:   '/docs/demos'},
+      {label: 'Docs',         to:   '/docs'},
+      {label: 'CLI',          to:   '/docs/tutorials/getting-started'},
     ],
   },
   {
     title: 'Legal',
     items: [
-      {label: 'Privacy Policy',   href: 'https://www.linuxfoundation.org/legal/privacy-policy'},
       {label: 'Terms & Conditions', href: 'https://www.linuxfoundation.org/legal/terms'},
-    ],
+      {label: 'Privacy Policy',   href: 'https://www.linuxfoundation.org/legal/privacy-policy'},
+     ],
   },
 ];
 

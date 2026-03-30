@@ -66,7 +66,7 @@ Commands:
   help [command]    display help for command
 ```
 
-## Login to reShapr beta
+## Login to reShapr
 
 While we use the **[reShapr Online Try](/docs/tutorials/try-reshapr-online)** in this tutorial, you should point the server URL to your own environment if you have one set up. Common URLs include `http://localhost:5555` for Docker Compose or your cluster’s ingress URL for Kubernetes.
 
