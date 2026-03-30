@@ -221,7 +221,7 @@ config.scripts = [
     async: true,
   },
   {
-    src: '/scripts/plausible-init.js',
+    src: '/js/plausible-init.js',
     defer: true,
   },
 ];
