@@ -19,7 +19,9 @@ reShapr provides two Helm charts, distributed as **OCI artifacts**:
 
 ## All instructions are on GitHub
 
+:::note
 Please read 👉 [https://github.com/reshaprio/reshapr-helm-charts](https://github.com/reshaprio/reshapr-helm-charts)
+:::
 
 ## Next steps
 

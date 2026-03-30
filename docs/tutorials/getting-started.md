@@ -26,7 +26,9 @@ With this output:
 
 The current `version` of the CLI is `0.0.5`.
 
-> We're iterating fast! Make sure you're on the latest version so you don't miss any of the new magic 🚀
+:::warning
+We're iterating fast! Make sure you're on the latest version so you don't miss any of the new magic 🚀
+:::
 
 You can also check the embedded help with this command:
 
@@ -86,7 +88,9 @@ Once this output appears, the system will wait for you to complete the authentic
 ✅ Configuration saved to /Users/yacine/.reshapr/config
 ```
 
-> 💡 If you're using your own setup, you can authenticate non-interactively with the `--username` and `--password` flags.
+:::info
+If you're using your own setup, you can authenticate non-interactively with the `--username` and `--password` flags.
+:::
 
 You’ll see that your connection information and ephemeral token are stored under your home folder. `reshapr logout` allows you to clean up everything.
 
@@ -111,7 +115,9 @@ With this output:
   Internal IDP: undefined
 ```
 
-🤔 **From this step, you have two choices**: exploring the detailed concepts step-by-step and executing detailed commands **OR** going directly to the **[All-in-one magic command 🪄](#all-in-one-magic-command-)**
+:::info
+**From this step, you have two choices**: exploring the detailed concepts step-by-step and executing detailed commands **OR** going directly to the **[All-in-one magic command 🪄](#all-in-one-magic-command-)**
+:::
 
 ## Import Artifact & Service
 
@@ -128,7 +134,9 @@ With this output:
 ℹ️  Discovered Service Open-Meteo APIs with ID: 0PXEW1ZDWFCZS
 ```
 
-> 💡 You can also import local files into reShapr using the `-f` option. There’s one caveat though: we’re not able to discover dependencies using this mode.
+:::info
+You can also import local files into reShapr using the `-f` option. There’s one caveat though: we’re not able to discover dependencies using this mode.
+:::
 
 You can now list and check the discovered Service with the `service` command:
 
@@ -149,7 +157,9 @@ Operations :
   - Name: GET /v1/forecast
 ```
 
-> 💡 In case of mistake or unused Service, you can delete a service using the `reshapr service delete <id>` command.
+:::info
+In case of mistake or unused Service, you can delete a service using the `reshapr service delete <id>` command.
+:::
 
 ## Configuring consumption
 
@@ -168,7 +178,7 @@ With this output:
 ✅ Configuration plan 'open-meteo-manual' created successfully with ID: 0PXPDMB4MFE6H
 ```
 
-> 💡 Likewise the `service` command, you can also use sub-commands like `list`, `get` or `delete` to manage your configurations.
+> Likewise the `service` command, you can also use sub-commands like `list`, `get` or `delete` to manage your configurations.
 
 ## Exposing an MCP Endpoint
 
@@ -212,7 +222,7 @@ Gateway Endpoints
     Endpoints: mcp.try.reshapr.io/mcp/yada/Open-Meteo+APIs/1.0
 ```
 
-> 💡 Likewise the `service` command, you can also use sub-commands like `list`, `get` or `delete` to manage your configurations.
+> Likewise the `service` command, you can also use sub-commands like `list`, `get` or `delete` to manage your configurations.
 
 🎉 Hooray! You deployed a MCP Endpoint! Check the `Endpoints` information just above (`mcp.try.reshapr.io/mcp/<organization>/Open-Meteo+APIs/1.0`): you can use this endpoint with `https://` prefix in your favorite MCP Client to access your new MCP Server!
 

@@ -11,11 +11,15 @@ First, you have to tell reShapr how to proceed for retrieving this artifact. You
 - `-f, --file <path>` to reference a local file you want to upload,
 - `-u, --url <url>` to ask the reShapr control plane to download a remote file.
 
-> 💡 When specifying a remote URL with the `-u` option, it can also be useful to specify a Secret with the `-s, --secret <artifactSecret>` to authorize the access to the remote endpoint. Check the **[Secret commands](cli-commands.md)** just below to learn how to create them.
+:::info
+When specifying a remote URL with the `-u` option, it can also be useful to specify a Secret with the `-s, --secret <artifactSecret>` to authorize the access to the remote endpoint. Check the **[Secret commands](cli-commands.md)** just below to learn how to create them.
+:::
 
 The discovery of the artifact Service is automatic for **[OpenAPI 3.x](https://www.openapis.org/)** specs and **[gRPC/Protobuf](https://grpc.io/)** definitions. By default, reShapr will use the identification elements (`name` and `version`) found in the artifact. You can, however, decide to override these information by using the additional `--sn, --serviceName <name>` and  `--sv, --serviceVersion <version>` options.
 
-> ⚠️ The discovery of Service from **[GraphQL](https://graphql.org/)**  schemas need some more help. Here, the additional `--sn, --serviceName <name>` and  `--sv, --serviceVersion <version>` options are mandatory. If not specified, the import will fail.
+:::warning
+The discovery of Service from **[GraphQL](https://graphql.org/)**  schemas need some more help. Here, the additional `--sn, --serviceName <name>` and  `--sv, --serviceVersion <version>` options are mandatory. If not specified, the import will fail.
+:::
 
 When importing an artifact Service, you may also choose not to consider all the different operations that will be discovered. Perhaps you want to restrict it to read-only access, or maybe your existing API is too coarse-grained, and you want to filter on a single domain. Whatever the reason, you can configure this with the following options:
 
@@ -64,7 +68,9 @@ Similar to the `import` command, you need to instruct reShapr on how to retrieve
 - `-f, --file <path>` to reference a local file you want to upload,
 - `-u, --url <url>` to ask the reShapr control plane to download a remote file.
 
-> 💡 When specifying a remote URL with the `-u` option, it can also be useful to specify a Secret with the `-s, --secret <artifactSecret>` to authorize the access to the remote endpoint. Check the **[Secret commands](cli-commands.md)** just below to learn how to create them.
+:::info
+When specifying a remote URL with the `-u` option, it can also be useful to specify a Secret with the `-s, --secret <artifactSecret>` to authorize the access to the remote endpoint. Check the **[Secret commands](cli-commands.md)** just below to learn how to create them.
+:::
 
 Here’s an example of an artifact attachment:
 

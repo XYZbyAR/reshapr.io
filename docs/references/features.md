@@ -44,4 +44,6 @@ Want to get all the features in a nutshell? This is where you can find all of th
 - Zero downtime deployments with auto-propagation on configuration changes
 - GitOps-friendly with YAML-based configuration
 
-**For more details, check out the reShapr [blog](https://reshaprio.medium.com/) posts and [demos](https://www.youtube.com/@reShapr).**
+:::info
+For more details, check out the reShapr **[blog](/blog)** posts and **[demos](https://www.youtube.com/@reshaprio)**.
+:::

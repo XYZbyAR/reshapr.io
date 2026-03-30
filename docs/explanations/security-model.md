@@ -28,8 +28,6 @@ Three different options are available to secure the MCP Server or Endpoint expos
   - OAuth 2.0 Authorization Server Metadata ([**RFC8414**](https://datatracker.ietf.org/doc/html/rfc8414))
   - OAuth 2.0 Resource Indicators ([**RFC 8707**](https://www.rfc-editor.org/rfc/rfc8707.html))
 
-> 💡 In case you don’t have an OAuth 2 Authorization Server at hand, reShapr provides its own **Internal OAuth2 IDP** *that can be used to host OAuth clients using the OAuth 2.0 Dynamic Client Registration Protocol ([**RFC7591**](https://datatracker.ietf.org/doc/html/rfc7591)). The reShapr IDP is delegates authentication to social identity providers so that you can secure their access to your MCP Server.
-
 ## Backend Secrets
 
 In addition to protecting the MCP Endpoint or Server, access to the backend API must also be protected. This backend must have a means to validate authentication and authorization proofs coming from the reShapr gateway.

@@ -11,7 +11,7 @@ This page explains how a reShapr hybrid deployment is working and how to impleme
 The **[Gateway Group & Gateway](../explanations/gateway-groups-and-gateways.md)** page introduces the core concepts of this deployment architecture:
 
 - The *Gateway Groups* represent the abstract target of your MCP Server exposition - it is owned by an organization and defines labels for matching *Gateways*,
-- The *Gateways* are the concrete elements that expose your MCP Servers - they receive deployment directives and configuration plans from the reShapr control plane. **
+- The *Gateways* are the concrete elements that expose your MCP Servers, they receive deployment directives and configuration plans from the reShapr control plane.
 
 <ThemedImage
   alt="Hybrid Deployment"
@@ -73,10 +73,11 @@ To retrieve an API token for your gateway(s), follow these steps from the reShap
 
     This command will display the value of the newly created API token in the terminal. Typically, something like:
 
-    ```bash
-    ⚠️  The API Token to register Gateway is: acme-oXYvTI8f8BeuJ5-HlNuon6vs2wSao8qS7WRNIYwoFW4
-    ⚠️  Make sure to store it securely, as it will not be shown again.
-    ```
+    > The API Token to register Gateway is: acme-oXYvTI8f8BeuJ5-HlNuon6vs2wSao8qS7WRNIYwoFW4
+
+    :::warning
+    Make sure to store it securely, as it will not be shown again.
+    :::
 
 3. Copy the displayed API token and store it securely, as it will not be shown again. You will need this token to register your gateway(s) with the Control Plane.
 
@@ -127,7 +128,9 @@ When starting the reShapr Gateway container, you need to set the following envir
 - `RESHAPR_GATEWAY_FQDNS`: A comma-separated list of *Fully Qualified Domain Names* that represent the hosts that can be used to reach out to your gateway. If none are provided, it defaults to `localhost`.
 - `RESHAPR_GATEWAY_LABELS`: The labels associated with your gateway, in the format `key1=value1,key2=value2`. These labels must match the ones from the *Gateway Group* you're targeting (e.g., `env=qa,region=eu-west-3`).
 
-> ⚠️ **Important:** The Gateway ID must be unique across all gateways registered in the Control Plane! We recommend using a naming convention that includes your organization to ensure uniqueness.
+:::warning
+**Important:** The Gateway ID must be unique across all gateways registered in the Control Plane! We recommend using a naming convention that includes your organization to ensure uniqueness.
+:::
 
 The port `7777` is the default port used by the reShapr Gateway for incoming traffic. You can adjust this port mapping as needed.
 

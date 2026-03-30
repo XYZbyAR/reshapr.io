@@ -84,7 +84,9 @@ curl -XPUT $SERVER_URL/api/admin/users/admin/organization/reshapr/owner \
   -H "x-reshapr-api-key: $SERVER_TOKEN"
 ```
 
-> ⚠️ The `SERVER_TOKEN` above is the **default** API key. If you have changed it in your deployment configuration, use your own token instead.
+:::warning
+The `SERVER_TOKEN` above is the **default** API key. If you have changed it in your deployment configuration, use your own token instead.
+:::
 
 ## Create a regular user and organization
 
@@ -134,7 +136,7 @@ You'll be prompted for your username and password. Once authenticated:
 ✅ Configuration saved to /Users/you/.reshapr/config
 ```
 
-From here, you can follow the **[Getting Started tutorial](./getting-started.md)** to import services, create configuration plans, and expose MCP endpoints just point everything at your local instance.
+> From here, you can follow the **[Getting Started tutorial](./getting-started.md)** to import services, create configuration plans, and expose MCP endpoints just point everything at your local instance.
 
 ## Stop the containers
 
@@ -192,7 +194,9 @@ The `install/` folder also includes helper scripts:
 - `start-control-plane.sh` - a simple script to run the `docker compose` command above
 - `start-proxy.sh` - a simple script to run the `docker run` command above
 
-> 💡 The `host.docker.internal` mapping lets the proxy container reach the control plane running on your host machine.
+:::info
+The `host.docker.internal` mapping lets the proxy container reach the control plane running on your host machine.
+:::
 
 The `install/` folder also includes helper scripts for user and organization setup:
 

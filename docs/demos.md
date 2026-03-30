@@ -23,4 +23,7 @@
   </a>
 </div>
 <br> </br>
+
+:::note
 Open the full channel via the **button above** to see all our demos.
+:::
