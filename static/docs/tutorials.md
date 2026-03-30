@@ -152,7 +152,7 @@ Helper scripts included: `create-admin.sh`, `create-user+org.sh`.
 
 ## Helm Charts
 
-https://reshapr.io/docs/tutorials/helm-charts
+https://reshapr.io/docs/tutorials/kubernetes
 
 Deploy reShapr on Kubernetes using Helm charts. Two OCI-based charts are available on Quay.io (latest version: 0.0.2):
 

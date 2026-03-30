@@ -14,7 +14,7 @@ function getAgentHref(pathname) {
   if (pathname.startsWith('/docs/overview')) return '/agent/docs?s=overview';
   if (
     pathname.includes('docker-compose') ||
-    pathname.includes('helm-charts') ||
+    pathname.includes('kubernetes') ||
     pathname.includes('hybrid-gateway')
   ) return '/agent/docs?s=how-to-guides';
   if (pathname.startsWith('/docs/tutorials')) return '/agent/docs?s=tutorials';

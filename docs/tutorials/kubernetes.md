@@ -302,6 +302,6 @@ kubectl exec -n reshapr-proxies deploy/reshapr-proxy \
 ## Next steps
 
 - **[Getting Started with CLI](./getting-started.md)** — import services and expose MCP endpoints
-- **[Docker Compose](./docker-compose.md)** — run reShapr locally for development
+- **[Run using Docker Compose](./docker-compose.md)** — run reShapr locally for development
 - **[How it works](../overview/how-it-works.md)** — understand the reShapr architecture
 - **[Security Model](../explanations/security-model.md)** — learn about reShapr security

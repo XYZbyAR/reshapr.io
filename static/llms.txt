@@ -28,7 +28,7 @@ reShapr enables enterprises to expose their APIs to AI agents and LLMs via the M
 - Getting started (CLI): https://reshapr.io/docs/tutorials/getting-started
 - Try reShapr online: https://reshapr.io/docs/tutorials/try-reshapr-online
 - Docker Compose deployment: https://reshapr.io/docs/tutorials/docker-compose
-- Helm chart deployment: https://reshapr.io/docs/tutorials/helm-charts
+- Helm chart deployment: https://reshapr.io/docs/tutorials/kubernetes
 - Security model: https://reshapr.io/docs/explanations/security-model
 - Services and artifacts: https://reshapr.io/docs/explanations/services-and-artifacts
 - Gateway groups and gateways: https://reshapr.io/docs/explanations/gateway-groups-and-gateways

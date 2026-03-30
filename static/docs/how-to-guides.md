@@ -14,7 +14,7 @@ Run reShapr locally using Docker Compose for development and testing. Full guide
 
 ## Helm Charts (coming soon)
 
-https://reshapr.io/docs/tutorials/helm-charts
+https://reshapr.io/docs/tutorials/kubernetes
 
 Deploy reShapr on Kubernetes using Helm for production-grade environments. Full guide coming soon.
 

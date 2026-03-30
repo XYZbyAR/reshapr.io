@@ -39,13 +39,13 @@
     "message": "Getting Started with CLI",
     "description": "The label for the doc item 'Getting Started with CLI' in sidebar 'tutorialSidebar', linking to the doc tutorials/getting-started"
   },
-  "sidebar.tutorialSidebar.doc.Docker Compose": {
-    "message": "Docker Compose",
-    "description": "The label for the doc item 'Docker Compose' in sidebar 'tutorialSidebar', linking to the doc tutorials/docker-compose"
+  "sidebar.tutorialSidebar.doc.Run using Docker Compose": {
+    "message": "Run using Docker Compose",
+    "description": "The label for the doc item 'Run using Docker Compose' in sidebar 'tutorialSidebar', linking to the doc tutorials/docker-compose"
   },
-  "sidebar.tutorialSidebar.doc.Helm Charts": {
-    "message": "Helm Charts",
-    "description": "The label for the doc item 'Helm Charts' in sidebar 'tutorialSidebar', linking to the doc tutorials/helm-charts"
+  "sidebar.tutorialSidebar.doc.Install on Kubernetes": {
+    "message": "Install on Kubernetes",
+    "description": "The label for the doc item 'Install on Kubernetes' in sidebar 'tutorialSidebar', linking to the doc tutorials/kubernetes"
   },
   "sidebar.tutorialSidebar.doc.Deploy a Hybrid Gateway": {
     "message": "Deploy a Hybrid Gateway",

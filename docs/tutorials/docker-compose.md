@@ -202,6 +202,6 @@ The `install/` folder also includes helper scripts for user and organization set
 ## Next steps
 
 - **[Getting Started with CLI](./getting-started.md)** — import services and expose MCP endpoints
-- **[Helm Charts](./helm-charts.md)** — deploy reShapr on Kubernetes
+- **[Install on Kubernetes](./kubernetes.md)** — deploy reShapr using Helm charts
 - **[How it works](../overview/how-it-works.md)** — understand the reShapr architecture
 
