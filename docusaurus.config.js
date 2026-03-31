@@ -213,15 +213,26 @@ const config = {
     }),
 };
 
-// Plausible analytics integration
+// See https://docusaurus.io/docs/api/docusaurus-config#scripts
 // See https://docusaurus.io/docs/api/docusaurus-config#scripts
 config.scripts = [
+  // Plausible
   {
     src: 'https://plausible.io/js/pa-TOyYchE3DUzm-4XTvkMo-.js',
     async: true,
   },
   {
     src: '/js/plausible-init.js',
+    defer: true,
+  },
+
+  // Google Analytics
+  {
+    src: 'https://www.googletagmanager.com/gtag/js?id=G-GQMWM4NR59',
+    async: true,
+  },
+  {
+    src: '/js/gtag-init.js',
     defer: true,
   },
 ];
