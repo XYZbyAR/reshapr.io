@@ -7,8 +7,9 @@ import {useLocation} from '@docusaurus/router';
  * Returns null when already inside the agent view (suppresses the toggle).
  */
 function getAgentHref(pathname) {
-  if (pathname.startsWith('/agent/')) return null;
+  if (pathname.startsWith('/agent/') || pathname === '/agent') return null;
 
+  if (pathname === '/' || pathname === '') return '/agent/';
   if (pathname.startsWith('/blog')) return '/agent/blog';
 
   if (pathname.startsWith('/docs/overview')) return '/agent/docs?s=overview';
@@ -27,8 +28,8 @@ function getAgentHref(pathname) {
   if (pathname.startsWith('/about')) return '/agent/about';
   if (pathname.startsWith('/community')) return '/agent/community';
 
-  // Home and any other pages — fall back to blog agent view
-  return '/agent/blog';
+  // No page-specific equivalent — fall back to the agent homepage
+  return '/agent/';
 }
 
 export default function Root({children}) {
