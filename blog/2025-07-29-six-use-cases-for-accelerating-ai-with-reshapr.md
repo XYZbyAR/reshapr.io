@@ -4,14 +4,13 @@ date: 2025-07-29
 authors:
   - yacine
   - laurent
+description: "Six ways organizations use reShapr to streamline API enablement, accelerate prototyping, and securely integrate AI into production."
+image: /img/blog/six-use-cases-hero.jpg
+tags: [Use Cases, AI, Enterprise]
 source_url: "https://medium.com/@reshaprio/six-use-cases-for-accelerating-ai-with-reshapr-e64e1dd09ef6"
 ---
 
 <!-- markdownlint-disable MD001 MD026 MD030 MD045 -->
-
-* * *
-
-### Six Use Cases for Accelerating AI with reShapr 🚀
 
 If you’re aiming to build AI‑native applications faster without sacrificing security or overhauling existing infrastructure, [**reShapr**](https://reshapr.io/) offers a transformative edge. Here are six compelling use cases showcasing how organizations leverage reShapr to streamline API enablement, accelerate prototyping, and securely integrate AI into production.
 

@@ -7,6 +7,86 @@
 /* Inter variable (weight + optical size + italic); falls through to system sans if Inter unavailable */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+/*
+ * ─── Global agent view toggle pill ──────────────────────────────────────────
+ * Rendered by src/theme/Root.js on every human-view page.
+ * Hidden automatically on /agent/* routes (Root returns null).
+ */
+.agent-view-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.5rem 1.1rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-button-border-radius);
+  color: var(--ifm-font-color-base) !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.15s, color 0.15s, box-shadow 0.15s;
+  z-index: 99;
+}
+
+.agent-view-toggle:hover {
+  border-color: var(--ifm-link-color);
+  color: var(--ifm-link-color) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/*
+ * ─── Agent view: hide Docusaurus navbar ─────────────────────────────────────
+ * Applied when AgentBlogView sets document.body.dataset.agentView = 'true'.
+ * Overriding --ifm-navbar-height to 0 means every sticky/top calculation
+ * that uses the variable (sidebar, toolbar) auto-recalculates for free.
+ */
+body[data-agent-view='true'] {
+  --ifm-navbar-height: 0px !important;
+}
+
+body[data-agent-view='true'] .navbar {
+  display: none !important;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/*
+ * ─── Aesthetic focus rings ──────────────────────────────────────────────────
+ * Visible only on keyboard navigation (not on mouse click/touch).
+ * border-radius on the element causes the outline to follow the rounded shape
+ * in modern browsers — no extra wrappers needed.
+ */
+:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Suppress the default ring on click/touch — :focus-visible already handles kb */
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Pill-shaped elements: inherit their own radius so the ring wraps snugly */
+.navbar-try-button:focus-visible,
+.tag:focus-visible,
+[class*='pills__item']:focus-visible {
+  border-radius: 999px;
+}
+
+/* Cards and rounded surfaces: match their radius */
+[class*='BlogPostPaginator'] a:focus-visible,
+[class*='DocCard']:focus-visible,
+[class*='card']:focus-visible {
+  border-radius: 0.75rem;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
 /* You can override the default Infima variables here. */
 /*
  * Brand palette: Figma "reShapr" variables — cyan + grey neutrals only (no azure / spring).
@@ -238,9 +318,9 @@ body,
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --reshapr-dark-canvas: #0a0a0a;
+  --reshapr-dark-canvas: #0d1012; /* lifted from #0a0a0a — subtle cool-dark, less stark */
   --reshapr-dark-surface: #2c2d30; /* color/grey/18 */
-  --reshapr-dark-raised: #161616;
+  --reshapr-dark-raised: #161b1f; /* subtle cool tint to match canvas */
 
   --ifm-hr-background-color: #3b3b3b; /* color/grey/23 */
   /* Darker cyan for primary buttons (white label); lighter cyan for links */
@@ -318,8 +398,7 @@ body,
 }
 
 /*
- * Desktop nav layout matches deploy-preview (auto | 1fr | auto grid) — see
- * https://deploy-preview-2--reshaprio.netlify.app/ — brand column, centered primary links, utilities.
+ * Desktop nav: brand | left-aligned link cluster | utilities on the right (avoids optical “off-center” bar).
  */
 .navbar > .navbar__inner.navbar__inner--reshapr {
   align-items: center;
@@ -347,23 +426,20 @@ body,
   align-items: center;
   display: flex !important;
   gap: 0.35rem;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 100%;
   min-width: 0;
 }
 
-/* Match main content width; grid centers the middle column’s link cluster (preview behavior). */
+/* Match main content width; primary links sit just after the logo. */
 @media (min-width: 1025px) {
   .navbar > .navbar__inner.navbar__inner--reshapr {
     box-sizing: border-box;
     display: grid !important;
     flex-wrap: unset !important;
-    grid-template-columns: auto 1fr auto !important;
+    grid-template-columns: auto max-content 1fr !important;
     justify-content: unset !important;
     justify-items: unset;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: var(--ifm-container-width);
     padding-inline: clamp(1rem, 2.5vw, 1.75rem);
   }
 
@@ -381,10 +457,10 @@ body,
   }
 
   .navbar__items--reshapr-nav {
-    justify-content: center;
-    justify-self: center;
-    max-width: 100%;
+    justify-content: flex-start;
+    justify-self: start;
     width: max-content;
+    max-width: min(100%, 52rem);
   }
 
   .navbar > .navbar__inner > .navbar__items--right {
@@ -492,26 +568,9 @@ body,
   opacity: 1;
 }
 
+/* Navbar CTA — hidden for now */
 .navbar-try-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  padding: 0.38rem 0.9rem !important;
-  border-radius: 999px;
-  border: 1px solid var(--ifm-color-primary-light);
-  background: var(--ifm-color-primary);
-  color: var(--palette-white) !important;
-  font-size: 0.92rem;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.navbar-try-button:hover {
-  background: var(--ifm-color-primary-dark);
-  color: var(--palette-white) !important;
-  border-color: var(--ifm-color-primary-dark);
+  display: none !important;
 }
 
 [data-theme='dark'] .navbar-try-button:hover {
@@ -531,19 +590,19 @@ body,
 
 /* Theme pill: not a square icon button — don’t force 42×42 / zero padding */
 .navbar button.clean-btn.reshapr-color-segmented {
-  width: 3.375rem !important;
-  min-width: 3.375rem !important;
+  width: 3.625rem !important;
+  min-width: 3.625rem !important;
   max-width: none !important;
-  height: calc(1.375rem + 10px) !important;
-  min-height: calc(1.375rem + 10px) !important;
-  max-height: calc(1.375rem + 10px) !important;
-  padding: 3px !important;
+  height: calc(1.375rem + 16px) !important;
+  min-height: calc(1.375rem + 16px) !important;
+  max-height: calc(1.375rem + 16px) !important;
+  padding: 4px !important;
   line-height: 0 !important;
 }
 
 .navbar button.clean-btn.reshapr-color-segmented svg {
-  width: 14px !important;
-  height: 14px !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 /* Navbar search / menu: 18×18 next to 20px type */
@@ -675,9 +734,9 @@ body,
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 42px;
-  min-width: 42px;
-  height: 42px;
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
   padding: 0;
   border-radius: 999px;
   border: none;
@@ -692,8 +751,8 @@ body,
 
 .navbar-github-link::before {
   content: '';
-  width: var(--reshapr-icon-size-inline);
-  height: var(--reshapr-icon-size-inline);
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
   display: inline-block;
   background-color: currentColor;
@@ -772,11 +831,6 @@ body,
     height: var(--reshapr-icon-size);
   }
 
-  .navbar-try-button {
-    height: 36px;
-    padding: 0.34rem 0.8rem !important;
-    font-size: 0.88rem;
-  }
 
   .navbar-try-button,
   .navbar-github-link,
@@ -893,8 +947,8 @@ body,
 @media (max-width: 1024px) {
   .navbar-sidebar .navbar__logo.navbar__logo-full img,
   .navbar-sidebar .navbar__logo.navbar__logo-compact {
-    height: 40px;
-    max-height: 40px;
+    height: var(--reshapr-navbar-logo-sidebar-height);
+    max-height: var(--reshapr-navbar-logo-sidebar-height);
     transform: none;
   }
 }
@@ -906,17 +960,17 @@ img.navbar__logo.navbar__logo-compact {
 }
 
 .navbar__logo.navbar__logo-full img {
-  height: 80px;
+  height: var(--reshapr-navbar-logo-wordmark-max-height);
   width: auto;
-  max-height: 80px;
+  max-height: var(--reshapr-navbar-logo-wordmark-max-height);
   display: block;
   margin: 0;
 }
 
 img.navbar__logo.navbar__logo-compact {
-  height: 48px;
-  width: 48px;
-  max-height: 48px;
+  height: var(--reshapr-navbar-logo-compact-size);
+  width: var(--reshapr-navbar-logo-compact-size);
+  max-height: var(--reshapr-navbar-logo-compact-size);
   margin: 0;
 }
 
@@ -927,8 +981,12 @@ img.navbar__logo.navbar__logo-compact {
 
 /* Overright Docusaurus default code block styles - Yacine */
 :root {
-  /* keep your custom height */
-  --ifm-navbar-height: 120px;
+  /* Navbar logo — tuned down from 80/48px wordmark/mark for a lighter top bar */
+  --reshapr-navbar-logo-wordmark-max-height: 64px;
+  --reshapr-navbar-logo-compact-size: 40px;
+  --reshapr-navbar-logo-sidebar-height: 34px;
+
+  --ifm-navbar-height: 104px;
 
   /* Wide layout for all pages */
   --ifm-container-width: 1400px;
@@ -1204,7 +1262,9 @@ img.navbar__logo.navbar__logo-compact {
   .theme-blog-list-page aside.col.col--3 nav.thin-scrollbar,
   .theme-blog-post-page aside.col.col--3 nav.thin-scrollbar {
     border-left: 0;
-    padding-left: 0.9rem;
+    border-right: 1px solid var(--reshapr-doc-divider);
+    padding-left: 0;
+    padding-right: 1.25rem;
   }
 
   /* Crisp docs rail: hairline vs main column; no fill (minimal) */
@@ -1254,7 +1314,7 @@ img.navbar__logo.navbar__logo-compact {
     background-size: 0.65rem 0.65rem !important;
   }
 
-  /* Widen the doc content column and equalize spacing */
+  /* Widen the doc content column on mid-range desktop (hides right TOC intentionally) */
   [class*='docItemCol'] {
     max-width: 100% !important;
   }
@@ -1318,10 +1378,22 @@ img.navbar__logo.navbar__logo-compact {
   .theme-blog-post-page aside.col.col--3 nav.thin-scrollbar > div:first-child,
   .theme-blog-list-page aside.col.col--3 nav.thin-scrollbar h3,
   .theme-blog-post-page aside.col.col--3 nav.thin-scrollbar h3 {
-    margin-bottom: 0.6rem;
-    font-size: var(--reshapr-nav-footer-font-size);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--reshapr-doc-divider);
+    font-size: 0.6875rem;
     font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ifm-font-color-secondary);
     line-height: 1.45;
+  }
+}
+
+/* Wide screen: restore natural column widths so the right TOC re-appears */
+@media (min-width: 1280px) {
+  [class*='docItemCol'] {
+    max-width: unset !important;
   }
 }
 
@@ -1346,7 +1418,7 @@ img.navbar__logo.navbar__logo-compact {
 }
 
 .youtube-demo-card:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--ifm-link-color);
   box-shadow: none;
 }
 
@@ -1402,45 +1474,89 @@ img.navbar__logo.navbar__logo-compact {
 
 .theme-blog-list-page article {
   margin: 0;
-  padding: 1.2rem 0;
+  padding: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
 }
 
-.theme-blog-list-page article h2 {
-  margin-bottom: 0.5rem;
-  font-size: clamp(1.45rem, 1.3rem + 0.45vw, 1.85rem);
-  line-height: 1.2;
+/* Blog list: expand col--9/col--offset-1 to full container width, matching About/Community */
+.theme-blog-list-page .row > .col {
+  max-width: 100%;
+  flex: 0 0 100%;
+  margin-left: 0;
 }
 
-.theme-blog-list-page article h2 a,
-.theme-blog-list-page article h2 a:visited,
-.theme-blog-list-page article h2 a:hover,
-.theme-blog-list-page article h2 a:active {
-  color: #000;
+/* Hide the tags footer on blog list and individual blog post pages */
+.theme-blog-list-page article footer.docusaurus-mt-lg,
+.theme-blog-post-page article footer.docusaurus-mt-lg {
+  display: none;
 }
 
-[data-theme='dark'] .theme-blog-list-page article h2 a,
-[data-theme='dark'] .theme-blog-list-page article h2 a:visited,
-[data-theme='dark'] .theme-blog-list-page article h2 a:hover,
-[data-theme='dark'] .theme-blog-list-page article h2 a:active {
-  color: #fff;
+/* Blog post TOC — subtle muted links, bright on active section */
+.theme-blog-post-page .table-of-contents {
+  padding-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 
-.theme-blog-list-page article p {
-  margin-bottom: 0.7rem;
-  color: var(--ifm-font-color-base);
+.theme-blog-post-page .table-of-contents__link {
+  color: var(--ifm-color-emphasis-500);
+  text-decoration: none;
+  transition: color 0.12s ease;
+  display: block;
+  padding: 0.2rem 0;
 }
 
+.theme-blog-post-page .table-of-contents__link:hover {
+  color: var(--ifm-color-emphasis-800);
+  text-decoration: none;
+}
+
+.theme-blog-post-page .table-of-contents__link--active {
+  color: var(--ifm-link-color);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .theme-blog-post-page .table-of-contents__link {
+  color: var(--ifm-color-emphasis-500);
+}
+
+[data-theme='dark'] .theme-blog-post-page .table-of-contents__link:hover {
+  color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme='dark'] .theme-blog-post-page .table-of-contents__link--active {
+  color: var(--ifm-link-color);
+}
+
+.theme-blog-post-page aside.col.col--3 {
+  padding-top: 0.5rem;
+}
+
+/* Cap line length for comfortable reading and center within its column */
 .theme-blog-post-page article {
+  max-width: 680px;
   margin: 0;
-  padding-top: 1.2rem;
+  padding-top: 0.5rem;
+}
+
+.theme-blog-post-page article header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.theme-blog-post-page article > div > :first-child {
+  margin-top: 3rem !important;
 }
 
 .theme-blog-post-page article header h1 {
-  font-size: clamp(2rem, 1.75rem + 0.9vw, 2.6rem);
-  line-height: 1.12;
+  font-size: clamp(1.9rem, 1.65rem + 0.85vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
 }
 
 .theme-blog-list-page nav.pagination-nav,
@@ -1580,22 +1696,26 @@ html.docs-doc-page .theme-doc-markdown.markdown:has(.docs-home-root) .docs-home-
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h1 {
-  font-size: clamp(2rem, 1.75rem + 0.9vw, 2.6rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--reshapr-space-4);
+  font-size: clamp(1.9rem, 1.7rem + 0.75vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--reshapr-space-3);
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h2 {
-  font-size: clamp(1.45rem, 1.3rem + 0.45vw, 1.85rem);
-  line-height: 1.22;
+  font-size: clamp(1.35rem, 1.22rem + 0.4vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.015em;
-  margin-top: var(--reshapr-space-12);
+  margin-top: var(--reshapr-space-14);
   margin-bottom: var(--reshapr-space-4);
+  padding-bottom: var(--reshapr-space-3);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h1 + h2 {
-  margin-top: var(--reshapr-space-6);
+  margin-top: var(--reshapr-space-8);
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h2:first-child {
@@ -1603,25 +1723,28 @@ html.docs-doc-page .theme-doc-markdown.markdown h2:first-child {
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h3 {
-  font-size: clamp(1.2rem, 1.08rem + 0.35vw, 1.45rem);
-  line-height: 1.28;
+  font-size: clamp(1.1rem, 1rem + 0.3vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.3;
   letter-spacing: -0.01em;
-  margin-top: var(--reshapr-space-7);
+  margin-top: var(--reshapr-space-8);
   margin-bottom: var(--reshapr-space-2);
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h4 {
-  font-size: 1.125rem;
-  line-height: 1.35;
-  margin-top: var(--reshapr-space-6);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  margin-top: var(--reshapr-space-5);
   margin-bottom: var(--reshapr-space-2);
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown h1 + p {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   line-height: var(--reshapr-doc-body-line-height);
   color: color-mix(in srgb, var(--ifm-font-color-base) 82%, var(--ifm-font-color-secondary));
-  margin-bottom: var(--reshapr-space-6);
+  margin-bottom: var(--reshapr-space-8);
 }
 
 html.docs-doc-page .theme-doc-markdown.markdown p,
@@ -1670,7 +1793,7 @@ html.docs-doc-page .theme-doc-markdown .card {
 }
 
 html.docs-doc-page .theme-doc-markdown .card:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--ifm-link-color);
   box-shadow: none;
 }
 
@@ -1683,15 +1806,39 @@ html.docs-doc-page .theme-doc-markdown .row .col {
   margin-bottom: 0;
 }
 
-html.docs-doc-page .table-of-contents {
+html.docs-doc-page .table-of-contents,
+.theme-blog-post-page .table-of-contents {
   border-left: 1px solid var(--reshapr-doc-divider);
   padding-left: var(--reshapr-space-5);
   padding-top: var(--reshapr-space-2);
   font-size: 0.8125rem;
 }
 
-html.docs-doc-page .table-of-contents__link {
+html.docs-doc-page .table-of-contents__link,
+.theme-blog-post-page .table-of-contents__link {
   line-height: 1.45;
+  color: var(--reshapr-sidebar-link-color);
+  transition: color 0.15s ease;
+}
+
+html.docs-doc-page .table-of-contents__link:hover,
+html.docs-doc-page .table-of-contents__link--active {
+  color: var(--ifm-link-color);
+  font-weight: 500;
+}
+
+html.docs-doc-page .table-of-contents::before,
+.theme-blog-post-page .table-of-contents::before {
+  display: block;
+  content: 'On this page';
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-font-color-secondary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--reshapr-doc-divider);
 }
 
 /* Code blocks: single hairline frame, no floaty shadow */

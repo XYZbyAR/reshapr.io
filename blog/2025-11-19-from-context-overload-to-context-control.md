@@ -4,14 +4,13 @@ date: 2025-11-19
 authors:
   - yacine
   - laurent
+description: "How reShapr's selective tool exposure makes the Model Context Protocol production-ready at enterprise scale."
+image: /img/blog/context-control-hero.jpeg
+tags: [MCP, Production, Context]
 source_url: "https://medium.com/@reshaprio/from-context-overload-to-context-control-f867caa816e5"
 ---
 
 <!-- markdownlint-disable MD001 MD026 MD030 MD045 -->
-
-* * *
-
-### From Context Overload to Context Control!
 
 ![](/img/blog/context-control-hero.jpeg)
 

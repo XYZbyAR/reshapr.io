@@ -1,6 +1,7 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useColorMode} from '@docusaurus/theme-common';
 
 import placeholders from '../../data/video-placeholders.json';
 
@@ -14,6 +15,8 @@ const FALLBACK = {
 /**
  * @param {object} props
  * @param {string} props.src - Public path, e.g. /img/foo.mp4 (must match video-placeholders.json key)
+ * @param {string} [props.srcLight] - Light-theme video; paired with srcDark for theme switching
+ * @param {string} [props.srcDark] - Dark-theme video; paired with srcLight for theme switching
  * @param {string} [props.className] - Root element
  * @param {string} [props.videoClassName] - Video element
  * @param {object} [props.style] - Root inline style
@@ -22,6 +25,8 @@ const FALLBACK = {
  */
 export default function VideoWithPlaceholder({
   src,
+  srcLight,
+  srcDark,
   className,
   videoClassName,
   style: rootStyle,
@@ -30,9 +35,21 @@ export default function VideoWithPlaceholder({
   ...videoProps
 }) {
   const [videoReady, setVideoReady] = useState(false);
-  const resolvedSrc = useBaseUrl(src);
+  const {colorMode} = useColorMode();
 
-  const meta = placeholders[src] ?? FALLBACK;
+  const themedSrc = srcLight && srcDark
+    ? (colorMode === 'dark' ? srcDark : srcLight)
+    : src;
+
+  const resolvedSrc = useBaseUrl(themedSrc);
+
+  // Reset ready state when the source changes so the placeholder
+  // shows again while the new video loads.
+  useEffect(() => {
+    setVideoReady(false);
+  }, [resolvedSrc]);
+
+  const meta = placeholders[themedSrc] ?? FALLBACK;
   const {placeholder, aspectRatio} = meta;
 
   const onLoadedData = useCallback(() => {
@@ -68,6 +85,7 @@ export default function VideoWithPlaceholder({
         />
       ) : null}
       <video
+        key={resolvedSrc}
         className={clsx(styles.video, videoClassName)}
         onLoadedData={onLoadedData}
         {...videoProps}>
