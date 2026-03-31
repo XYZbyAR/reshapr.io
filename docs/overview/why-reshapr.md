@@ -2,7 +2,6 @@
 
 Hey hey… wondering why we built reShapr? 🤔
 
-
 :::info
 Check out our 👉 [**blog post**](/blog/why-reshapr) on that topic!
 :::

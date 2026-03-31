@@ -48,7 +48,6 @@ function CliInstallSnippet() {
       <div className={styles.cliBar}>
         <code className={styles.cliCode}>
           <span className={styles.cliPrompt} aria-hidden>
-            $
           </span>
           <span className={styles.cliCommand}>{CLI_INSTALL_CMD}</span>
         </code>

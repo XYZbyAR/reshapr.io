@@ -40,8 +40,6 @@ Below is an example of an all-in-one command that imports a local GraphQL schema
 reshapr import -f ../dev/github-api.graphql --sn 'GitHub GraphQL' --sv '20250917' --be https://api.github.com/graphql --apiKey
 ```
 
-With this output:
-
 ```bash
 ✅ Import successful!
 ℹ️  Discovered Service GitHub GraphQL with ID: 0N2G4YZFDD3ZF
@@ -78,8 +76,6 @@ Here’s an example of an artifact attachment:
 reshapr attach -f ../dev/github-api-prompts.yaml
 ```
 
-With this output:
-
 ```bash
 ✅ Attachment successful!
 ℹ️  Discovered Artifact file with ID: 0NKVYHWSR9VPT
@@ -111,8 +107,6 @@ reshapr secret create my-secret --description 'A secret to access a super secure
 -t acme_wXl53oz5gFeSmBt8awTUJI72yQSrtbMP -h x-acme-api-key --certificate ../certs/my-secret.pem
 ```
 
-With this output:
-
 ```bash
 ✅ Secret my-secret created successfully with ID: 0N084D4H90937
 ```
@@ -136,8 +130,6 @@ reshapr secret create-elicitation 3rd-party-oauth --oc reshapr-saas \
 --oae https://idp.example.com/realms/3rdparty/protocol/openid-connect/auth\?scope\=openid\%20profile\&response_type\=code\&prompt\=login \
 --ote https://idp.eample.com/realms/3rdparty/protocol/openid-connect/token
 ```
-
-With this output:
 
 ```bash
 ✅ Elicitation secret 3rd-party-oauth created successfully with ID: 0NWN2WHGEA2JP
@@ -221,14 +213,6 @@ Given a Configuration Plan that was previously created with the `--apiKey` optio
 
 `reshapr config renew-api-key <configurationId>` will remove the existing API key and output a fresh API key that replaces it. The new API key is provided only once; you must store it in a secure location and share it only with trusted individuals.
 
-## OAuth 2 commands
-
-### `reshapr oauth2 auth-client` command
-
-Given a Client ID previously acquired with the `reshapr config create` command, this command allows you to authenticate yourself using a social identity provider on the *reShapr Internal OAuth 2 IDP*.
-
-`reshapr oauth2 auth-client <clientID>` opens up a browser pointing to *reShapr Internal IDP*, delegating authentication to the social identity provider of your choice and providing you back with an Access Token for accessing your Service MCP Endpoints.
-
 ## Structured output
 
 Most of the CLI commands allow a `--output <format>`  option (or just `-o` for the short alternative) that allows you to format the output in either `json` or `yaml`. Using this flag option is extremely convenient, combined with utilities such as `jq` or `yq` , for automating publication or configuration changes on reShapr.
@@ -236,8 +220,10 @@ Most of the CLI commands allow a `--output <format>`  option (or just `-o` for t
 Here’s below an example:
 
 ```bash
-$ reshapr service list -o json
-==== OUTPUT ====
+reshapr service list -o json
+```
+
+```bash
 [
   {
     "id": "0N0802V07SZEH",
@@ -248,8 +234,12 @@ $ reshapr service list -o json
     "type": "REST"
   }
 ]
+```
 
-$ reshapr service get 0N0802V07SZEH -o json | jq .name
-==== OUTPUT ====
+```bash
+reshapr service get 0N0802V07SZEH -o json | jq .name
+```
+
+```bash
 "Open-Meteo APIs"
 ```
